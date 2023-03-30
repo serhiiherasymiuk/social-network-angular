@@ -1,0 +1,13 @@
+<div class="post-list">
+  <div *ngFor="let post of posts" class="post-card">
+    <div class="post-header">
+      <p>{{ post.UserId }} {{ post.DateCreated| date }}</p>
+    </div>
+    <div class="post-body">
+      <p>{{ post.Content }}</p>
+    </div>
+    <div class="post-footer">
+      <p>comments</p>
+      <p>likes</p>
+  </div>
+</div>
