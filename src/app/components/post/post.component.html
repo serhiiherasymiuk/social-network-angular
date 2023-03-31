@@ -1,0 +1,16 @@
+<div class="post-card">
+  <div class="post-header">
+    <p>{{ post.UserId }} {{ post.DateCreated | date }}</p>
+  </div>
+  <div class="post-body">
+    <p>{{ post.Content }}</p>
+  </div>
+  <div class="post-footer">
+    <div>
+        <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
+        <p>{{post.PostComments.length}}</p>
+    </div>
+    <p>likes</p>
+  </div>
+  <app-comment-list #commentsComponent [post]="post"></app-comment-list>
+</div>
