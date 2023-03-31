@@ -1,13 +1,14 @@
 <div class="post-list">
   <div *ngFor="let post of posts" class="post-card">
     <div class="post-header">
-      <p>{{ post.UserId }} {{ post.DateCreated| date }}</p>
+      <p>{{ post.UserId }} {{ post.DateCreated | date }}</p>
     </div>
     <div class="post-body">
       <p>{{ post.Content }}</p>
     </div>
     <div class="post-footer">
-      <p>comments</p>
+      <button class="comment-icon" (click)="commentsComponent.toggleComments()">Comments</button>
       <p>likes</p>
-  </div>
+    </div>
+    <app-comment-list #commentsComponent [post]="post"></app-comment-list>
 </div>
