@@ -6,7 +6,10 @@
     <p>{{ post.Content }}</p>
   </div>
   <div class="post-footer">
-    <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
+    <div>
+        <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
+        <p>{{post.PostComments.length}}</p>
+    </div>
     <p>likes</p>
   </div>
   <app-comment-list #commentsComponent [post]="post"></app-comment-list>

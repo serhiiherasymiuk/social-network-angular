@@ -8,6 +8,9 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,9 @@ import { CommentComponent } from './components/comment/comment.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@ import { IPostComment } from 'src/app/interfaces/comment';
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
   @Input() comment: IPostComment = {
