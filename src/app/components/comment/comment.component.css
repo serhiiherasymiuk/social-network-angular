@@ -1,0 +1,14 @@
+.comment-header {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+.comment {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #777;
+}

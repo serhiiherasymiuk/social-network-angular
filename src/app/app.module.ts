@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { PostComponent } from './components/post/post.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PostComponent } from './components/post/post.component';
     PostListComponent,
     CommentListComponent,
     PostComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

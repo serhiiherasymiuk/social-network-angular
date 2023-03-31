@@ -1,11 +1,6 @@
 <div *ngIf="showComments" class="comment-list">
   <h3>Comments</h3>
   <ul>
-    <li *ngFor="let comment of post?.PostComments">
-      <div class="comment-header">
-          <p>{{ comment.UserId }} - {{ comment.DateCreated | date }}</p>
-      </div>
-      <p>{{ comment.Content }}</p>
-    </li>
+    <app-comment *ngFor="let comment of post?.PostComments" [comment]="comment"></app-comment>
   </ul>
 </div>
