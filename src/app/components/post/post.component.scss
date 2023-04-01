@@ -5,10 +5,11 @@
   align-items: center;
 }
 .post-card {
-  border: 1px solid #777;
+  border: 2px solid #263238;
   border-radius: 4px;
   margin: 8px;
   padding: 16px;
+  padding-bottom: 0;
   width: 600px;
 }
 .post-header {
@@ -25,7 +26,7 @@
 .post-header p {
   margin: 0;
   font-size: 14px;
-  color: #777;
+  color: #607d8b;
 }
 .post-body {
   margin-bottom: 16px;
@@ -41,7 +42,7 @@
 .post-footer p {
   margin: 0;
   font-size: 14px;
-  color: #777;
+  color: #607d8b;
 }
 .comment-button {
   border: none;
@@ -49,12 +50,9 @@
   padding: 0;
   height: 24px;
   width: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .comment-button i {
   font-size: 24px;
-  transition: all 0.2s ease-in-out;
-}
-.comment-button i:hover {
-  text-shadow: 0 0 10px black;
-  font-size: 26px;
 }

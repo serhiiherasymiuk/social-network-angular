@@ -16,3 +16,8 @@
 .comment-input {
   width: 100%;
 }
+.comment-list>div {
+  display: flex;
+  flex-direction: column;
+  gap:  10px;
+}

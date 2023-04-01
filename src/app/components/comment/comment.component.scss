@@ -1,7 +1,7 @@
 .comment-header {
   margin: 0;
   font-size: 14px;
-  color: #777;
+  color: #607d8b;
 }
 .comment {
   margin-bottom: 10px;
@@ -10,5 +10,8 @@
   padding: 10px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px 10px #777;
+  box-shadow: 5px 5px 10px #90a4ae;
+}
+.comment p {
+  word-wrap: break-word;
 }

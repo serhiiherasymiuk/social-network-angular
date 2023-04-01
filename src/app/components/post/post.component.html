@@ -10,7 +10,10 @@
         <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
         <p>{{post.PostComments.length}}</p>
     </div>
-    <p>likes</p>
+    <div>
+      <app-post-like #postLikeComponent [post]="post"></app-post-like>
+      <p>{{post.PostLikes.length}}</p>
+    </div>
   </div>
   <app-comment-list #commentsComponent [post]="post"></app-comment-list>
 </div>
