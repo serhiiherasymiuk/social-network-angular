@@ -30,6 +30,7 @@ export class CommentListComponent {
     DateCreated: new Date,
     UserId: "this user",
     PostId: 0,
+    CommentLikes: [],
   };
 
   @Input() post: IPost | undefined;
