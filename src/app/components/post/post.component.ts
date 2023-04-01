@@ -12,6 +12,7 @@ export class PostComponent {
     Content: '',
     DateCreated: new Date,
     UserId: '',
-    PostComments: []
+    PostComments: [],
+    PostLikes: []
   };
 }
