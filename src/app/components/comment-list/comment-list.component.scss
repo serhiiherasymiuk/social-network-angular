@@ -13,3 +13,11 @@
   margin: 0;
   padding: 0;
 }
+.comment-input {
+  width: 100%;
+}
+.comment-list>div {
+  display: flex;
+  flex-direction: column;
+  gap:  10px;
+}

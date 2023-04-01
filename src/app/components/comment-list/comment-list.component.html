@@ -1,4 +1,11 @@
 <div [@showHideComments]="showComments ? 'show' : 'hide'" class="comment-list">
+  <div>
+    <button (click)="addComment()" mat-stroked-button>Comment</button>
+    <mat-form-field class="comment-input" appearance="outline">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput [(ngModel)]="comment.Content" type="text"></textarea>
+    </mat-form-field>
+  </div>
   <ul>
     <app-comment *ngFor="let comment of post?.PostComments" [comment]="comment"></app-comment>
   </ul>
