@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { PostLikeComponent } from './components/post-like/post-like.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     CommentListComponent,
     PostComponent,
     CommentComponent,
+    PostLikeComponent,
   ],
   imports: [
     BrowserModule,

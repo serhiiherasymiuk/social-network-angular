@@ -39,6 +39,9 @@ export class CommentListComponent {
     this.showComments = !this.showComments;
   }
   addComment() {
-    this.post?.PostComments.push({...this.comment});
+    if (this.comment.Content.trim() !== '') {
+      this.post?.PostComments.push({...this.comment});
+      this.comment.Content = '';
+    }
   }
 }

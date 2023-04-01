@@ -29,6 +29,7 @@ export class PostListComponent {
           PostId: 1,
         },
       ],
+      PostLikes: [],
     },
     {
       Id: 2,
@@ -36,6 +37,7 @@ export class PostListComponent {
       DateCreated: new Date(),
       UserId: 'user2',
       PostComments: [],
+      PostLikes: [],
     },
     {
       Id: 3,
@@ -43,6 +45,7 @@ export class PostListComponent {
       DateCreated: new Date(),
       UserId: 'user3',
       PostComments: [],
+      PostLikes: [],
     },
   ];
 }

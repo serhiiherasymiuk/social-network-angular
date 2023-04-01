@@ -1,4 +1,5 @@
 import { IPostComment } from "./comment";
+import { IPostLike } from "./postLike";
 
 export interface IPost {
     Id: number;
@@ -6,4 +7,5 @@ export interface IPost {
     DateCreated: Date;
     UserId: string;
     PostComments: IPostComment[];
+    PostLikes: IPostLike[];
 }
