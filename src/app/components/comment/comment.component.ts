@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPostComment } from 'src/app/interfaces/comment';
+import { IComment } from 'src/app/interfaces/comment';
 
 @Component({
   selector: 'app-comment',
@@ -7,11 +7,12 @@ import { IPostComment } from 'src/app/interfaces/comment';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
-  @Input() comment: IPostComment = {
+  @Input() comment: IComment = {
     Id: 0,
     Content: '',
     DateCreated: new Date,
     UserId: '',
-    PostId: 0
+    PostId: 0,
+    CommentLikes: [],
   };
 }

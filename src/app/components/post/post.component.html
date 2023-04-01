@@ -8,7 +8,7 @@
   <div class="post-footer">
     <div>
         <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
-        <p>{{post.PostComments.length}}</p>
+        <p>{{post.Comments.length}}</p>
     </div>
     <div>
       <app-post-like #postLikeComponent [post]="post"></app-post-like>
