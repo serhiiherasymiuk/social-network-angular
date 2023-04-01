@@ -22,7 +22,7 @@ import { IComment } from '../../interfaces/comment';
         padding: 0,
       })),
       transition('show <=> hide', [
-        animate('150ms ease-in-out')
+        animate('200ms ease-in-out')
       ])
     ])
   ]
