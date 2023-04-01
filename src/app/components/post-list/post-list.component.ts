@@ -20,6 +20,7 @@ export class PostListComponent {
           DateCreated: new Date(),
           UserId: 'user5',
           PostId: 1,
+          CommentLikes: []
         },
         {
           Id: 3,
@@ -27,6 +28,7 @@ export class PostListComponent {
           DateCreated: new Date(),
           UserId: 'user6',
           PostId: 1,
+          CommentLikes: []
         },
       ],
       PostLikes: [],
