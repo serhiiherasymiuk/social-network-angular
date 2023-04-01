@@ -18,6 +18,9 @@
   align-items: center;
   margin-bottom: 16px;
 }
+.post-body p {
+  margin: 0;
+}
 .post-header h2 {
   margin: 0;
   font-size: 24px;
@@ -28,16 +31,10 @@
   font-size: 14px;
   color: #607d8b;
 }
-.post-body {
-  margin-bottom: 16px;
-}
 .post-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.post-footer>div {
-    gap: 10px;
 }
 .post-footer p {
   margin: 0;
@@ -51,6 +48,7 @@
   height: 24px;
   width: 24px;
   border-radius: 50%;
+  margin-right: 10px;
   cursor: pointer;
 }
 .comment-button i {

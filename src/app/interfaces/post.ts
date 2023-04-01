@@ -1,4 +1,4 @@
-import { IPostComment } from "./comment";
+import { IComment } from "./comment";
 import { IPostLike } from "./postLike";
 
 export interface IPost {
@@ -6,6 +6,6 @@ export interface IPost {
     Content: string;
     DateCreated: Date;
     UserId: string;
-    PostComments: IPostComment[];
+    Comments: IComment[];
     PostLikes: IPostLike[];
 }

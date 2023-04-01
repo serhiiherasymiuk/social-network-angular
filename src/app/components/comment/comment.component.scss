@@ -8,10 +8,30 @@
   font-size: 14px;
   line-height: 1.4;
   padding: 10px;
+  padding-bottom: 0;
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px 10px #90a4ae;
 }
 .comment p {
   word-wrap: break-word;
+}
+.comment-body p {
+  margin: 0;
+}
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  left: -10px;
+}
+.comment-footer>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.comment-footer p {
+  margin: 0;
 }

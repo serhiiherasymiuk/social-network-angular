@@ -13,14 +13,14 @@ export class PostListComponent {
       Content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       DateCreated: new Date(),
       UserId: 'user1',
-      PostComments: [
+      Comments: [
         {
           Id: 2,
           Content: 'I completely agree with you.',
           DateCreated: new Date(),
           UserId: 'user5',
           PostId: 1,
-          CommentLikes: []
+          CommentLikes: [],
         },
         {
           Id: 3,
@@ -28,7 +28,7 @@ export class PostListComponent {
           DateCreated: new Date(),
           UserId: 'user6',
           PostId: 1,
-          CommentLikes: []
+          CommentLikes: [],
         },
       ],
       PostLikes: [],
@@ -38,7 +38,7 @@ export class PostListComponent {
       Content: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
       DateCreated: new Date(),
       UserId: 'user2',
-      PostComments: [],
+      Comments: [],
       PostLikes: [],
     },
     {
@@ -46,7 +46,7 @@ export class PostListComponent {
       Content: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.',
       DateCreated: new Date(),
       UserId: 'user3',
-      PostComments: [],
+      Comments: [],
       PostLikes: [],
     },
   ];

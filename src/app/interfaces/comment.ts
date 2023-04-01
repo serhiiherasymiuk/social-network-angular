@@ -1,6 +1,6 @@
 import { ICommentLike } from "./commentLike";
 
-export interface IPostComment {
+export interface IComment {
     Id: number;
     Content: string;
     DateCreated: Date;

@@ -2,5 +2,13 @@
     <div class="comment-header">
         <p>{{ comment.UserId }} - {{ comment.DateCreated | date }}</p>
     </div>
-    <p>{{ comment.Content }}</p>
+    <div class="comment-body">
+        <p>{{ comment.Content }}</p>
+    </div>
+    <div class="comment-footer">
+        <div>
+            <app-comment-like #commentLikeComponent [comment]="comment"></app-comment-like>
+            <p>{{ comment.CommentLikes.length }}</p>
+        </div>
+    </div>
 </li>

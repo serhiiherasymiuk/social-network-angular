@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { IPostComment } from '../../interfaces/comment';
+import { IComment } from '../../interfaces/comment';
 
 @Component({
   selector: 'app-comment-list',
@@ -12,10 +12,14 @@ import { IPostComment } from '../../interfaces/comment';
       state('show', style({
         height: '*',
         opacity: 1,
+        visibility: 'visible',
+        padding: 10,
       })),
       state('hide', style({
         height: 0,
         opacity: 0,
+        visibility: 'hidden',
+        padding: 0,
       })),
       transition('show <=> hide', [
         animate('150ms ease-in-out')
@@ -24,7 +28,7 @@ import { IPostComment } from '../../interfaces/comment';
   ]
 })
 export class CommentListComponent {
-  comment: IPostComment = {
+  comment: IComment = {
     Id: 0,
     Content: "",
     DateCreated: new Date,
@@ -40,8 +44,9 @@ export class CommentListComponent {
     this.showComments = !this.showComments;
   }
   addComment() {
+    this.comment.CommentLikes = [];
     if (this.comment.Content.trim() !== '') {
-      this.post?.PostComments.push({...this.comment});
+      this.post?.Comments.push({...this.comment});
       this.comment.Content = '';
     }
   }
