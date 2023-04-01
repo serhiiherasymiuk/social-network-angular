@@ -15,15 +15,15 @@ export interface IUser{
     Email: string;
     ProfilePictureUrl: string;
 
-    Posts?: IPost[];
-    PostComments?: IPostComment[];
-    PostLikes?: IPostLike[];
-    CommentLikes?: ICommentLike[];
-    Followers?: IFollow[];
-    FollowedUsers?: IFollow[];
-    IndividualChats?: IIndividualChat[];
-    GroupChats?: IGroupChat[];
-    IndividualChatMessages?: IIndividualChatMessage[];
-    GroupChatMessages?: IGroupChatMessage[];
-    Notification?: INotification[];
+    Posts: IPost[];
+    PostComments: IPostComment[];
+    PostLikes: IPostLike[];
+    CommentLikes: ICommentLike[];
+    Followers: IFollow[];
+    FollowedUsers: IFollow[];
+    IndividualChats: IIndividualChat[];
+    GroupChats: IGroupChat[];
+    IndividualChatMessages: IIndividualChatMessage[];
+    GroupChatMessages: IGroupChatMessage[];
+    Notification: INotification[];
 }

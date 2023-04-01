@@ -6,6 +6,6 @@ export interface IPost {
     Content: string;
     DateCreated: Date;
     UserId: string;
-    PostComments?: IPostComment[];
-    PostLikes?: IPostLike[];
+    PostComments: IPostComment[];
+    PostLikes: IPostLike[];
 }

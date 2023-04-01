@@ -12,6 +12,7 @@ export class CommentComponent {
     Content: '',
     DateCreated: new Date,
     UserId: '',
-    PostId: 0
+    PostId: 0,
+    CommentLikes: []
   };
 }

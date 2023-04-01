@@ -6,5 +6,5 @@ export interface IPostComment {
     DateCreated: Date;
     UserId: string;
     PostId: number;
-    CommentLikes?: ICommentLike[];
+    CommentLikes: ICommentLike[];
 }
