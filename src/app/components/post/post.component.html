@@ -1,9 +1,28 @@
 <div class="post-card">
   <div class="post-header">
-    <p>{{ post.UserId }} {{ post.DateCreated | date }}</p>
+    <div>
+      <p>{{ post.UserId }}</p>
+      <p>{{ post.DateCreated | date }}</p>
+    </div>
+    <div>
+      <button *ngIf="post.UserId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()" mat-stroked-button>Edit</button>
+      <button *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
+      <button *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+    </div>
   </div>
   <div class="post-body">
-    <p>{{ post.Content }}</p>
+    <div *ngIf="isEditing">
+      <mat-form-field class="edit-field" appearance="outline">
+        <mat-label>Edit a post</mat-label>
+        <textarea             
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="10" 
+          matInput [(ngModel)]="editedContent" [value]="post.Content" type="text"></textarea>
+      </mat-form-field>
+    </div>
+    <p *ngIf="!isEditing">{{ post.Content }}</p>
   </div>
   <div class="post-footer">
     <div>

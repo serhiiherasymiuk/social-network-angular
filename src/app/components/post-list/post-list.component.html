@@ -3,8 +3,13 @@
     <button (click)="addPost()" mat-stroked-button>Post</button>
     <mat-form-field appearance="outline">
       <mat-label>Leave a post</mat-label>
-      <textarea matInput [(ngModel)]="post.Content" type="text"></textarea>
+      <textarea      
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="10" 
+      matInput [(ngModel)]="post.Content" type="text"></textarea>
     </mat-form-field>
   </div>
-  <app-post *ngFor="let post of posts" [post]="post"></app-post>
+  <app-post *ngFor="let post of posts" [post]="post" [currentUserId]="currentUser.Id"></app-post>
 </div>
