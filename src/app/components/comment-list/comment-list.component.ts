@@ -37,7 +37,14 @@ export class CommentListComponent {
     PostId: 0,
     CommentLikes: [],
   };
-  @Input() post: IPost | undefined;
+  @Input() post: IPost = {
+    Id: 0,
+    Content: "",
+    DateCreated: new Date,
+    UserId: "",
+    PostLikes: [],
+    Comments: [],
+  };
   showComments = false;
 
   toggleComments() {

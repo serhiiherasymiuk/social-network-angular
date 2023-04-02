@@ -8,6 +8,7 @@ import { IPost } from '../../interfaces/post';
 })
 export class PostComponent {
   @Input() currentUserId: string = "";
+  @Input() posts: IPost[] = [];
   @Input() post: IPost = {
     Id: 0,
     Content: '',
@@ -30,5 +31,9 @@ export class PostComponent {
   }
   cancelEditing() {
     this.isEditing = false;
+  }
+  deletePost() {
+    var index = this.posts.indexOf(this.post);
+    this.posts.splice(index, 1);
   }
 }

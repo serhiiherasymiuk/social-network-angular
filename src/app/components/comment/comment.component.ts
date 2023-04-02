@@ -8,6 +8,7 @@ import { IComment } from 'src/app/interfaces/comment';
 })
 export class CommentComponent {
   @Input() currentUserId: string = "";
+  @Input() comments: IComment[] = [];
   @Input() comment: IComment = {
     Id: 0,
     Content: '',
@@ -30,5 +31,9 @@ export class CommentComponent {
   }
   cancelEditing() {
     this.isEditing = false;
+  }
+  deleteComment() {
+    var index = this.comments.indexOf(this.comment);
+    this.comments.splice(index, 1);
   }
 }

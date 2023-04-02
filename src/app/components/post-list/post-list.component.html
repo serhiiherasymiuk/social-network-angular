@@ -11,5 +11,5 @@
       matInput [(ngModel)]="post.Content" type="text"></textarea>
     </mat-form-field>
   </div>
-  <app-post *ngFor="let post of posts" [post]="post" [currentUserId]="currentUser.Id"></app-post>
+  <app-post *ngFor="let post of posts" [post]="post" [currentUserId]="currentUser.Id" [posts]="posts"></app-post>
 </div>

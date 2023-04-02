@@ -53,7 +53,7 @@
   font-size: 14px;
   color: #607d8b;
 }
-.comment-button, .edit-button {
+.comment-button, .edit-button, .delete-button {
   border: none;
   background-color: transparent;
   padding: 0;
@@ -66,8 +66,8 @@
 .comment-button i {
   font-size: 26px;
 }
-.edit-button i {
-  font-size: 24px;
+.edit-button i, .delete-button i {
+  font-size: 20px;
 }
 .cancel-button, .save-button {
   height: 100%;
