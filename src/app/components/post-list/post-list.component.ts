@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IPost } from '../../interfaces/post';
+import { IUser } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-post-list',
@@ -7,6 +8,39 @@ import { IPost } from '../../interfaces/post';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent {
+  currentUser: IUser = {
+    Id: "currentUserId",
+    UserName: "johndoe",
+    Email: "johndoe@example.com",
+    ProfilePictureUrl: "https://example.com/profile_picture.jpg",
+    Posts: [],
+    Comments: [],
+    PostLikes: [],
+    CommentLikes: [],
+    Followers: [],
+    FollowedUsers: [],
+    IndividualChats: [],
+    GroupChats: [],
+    IndividualChatMessages: [],
+    GroupChatMessages: [],
+    Notifications: []
+  };
+  post: IPost = {
+    Id: 0,
+    Content: "",
+    DateCreated: new Date,
+    UserId: "currentUserId",
+    PostLikes: [],
+    Comments: [],
+  };
+  addPost() {
+    this.post.Comments = [];
+    this.post.PostLikes = [];
+    if (this.post.Content.trim() !== '') {
+      this.posts.unshift({...this.post});
+      this.post.Content = '';
+    }
+  }
   posts: IPost[] = [
     {
       Id: 1,

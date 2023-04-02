@@ -13,31 +13,38 @@ import { IComment } from '../../interfaces/comment';
         height: '*',
         opacity: 1,
         visibility: 'visible',
-        padding: 10,
+        'padding-top': 10,
       })),
       state('hide', style({
         height: 0,
         opacity: 0,
         visibility: 'hidden',
-        padding: 0,
+        'padding-top': 0,
       })),
       transition('show <=> hide', [
-        animate('150ms ease-in-out')
+        animate('200ms ease-in-out')
       ])
     ])
   ]
 })
 export class CommentListComponent {
+  @Input() currentUserId: string = "";
   comment: IComment = {
     Id: 0,
     Content: "",
     DateCreated: new Date,
-    UserId: "this user",
+    UserId: "currentUserId",
     PostId: 0,
     CommentLikes: [],
   };
-
-  @Input() post: IPost | undefined;
+  @Input() post: IPost = {
+    Id: 0,
+    Content: "",
+    DateCreated: new Date,
+    UserId: "",
+    PostLikes: [],
+    Comments: [],
+  };
   showComments = false;
 
   toggleComments() {
@@ -46,7 +53,7 @@ export class CommentListComponent {
   addComment() {
     this.comment.CommentLikes = [];
     if (this.comment.Content.trim() !== '') {
-      this.post?.Comments.push({...this.comment});
+      this.post?.Comments.unshift({...this.comment});
       this.comment.Content = '';
     }
   }

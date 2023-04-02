@@ -1,9 +1,29 @@
 <div class="post-card">
   <div class="post-header">
-    <p>{{ post.UserId }} {{ post.DateCreated | date }}</p>
+    <div>
+      <p>{{ post.UserId }}</p>
+      <p>{{ post.DateCreated | date }}</p>
+    </div>
+    <div>
+      <button *ngIf="post.UserId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+      <button *ngIf="post.UserId === currentUserId && !isEditing" class="delete-button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
+      <button class="save-button" *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
+      <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+    </div>
   </div>
   <div class="post-body">
-    <p>{{ post.Content }}</p>
+    <div *ngIf="isEditing">
+      <mat-form-field class="edit-field" appearance="outline">
+        <mat-label>Edit a post</mat-label>
+        <textarea             
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="10" 
+          matInput [(ngModel)]="editedContent" [value]="post.Content" type="text"></textarea>
+      </mat-form-field>
+    </div>
+    <p *ngIf="!isEditing">{{ post.Content }}</p>
   </div>
   <div class="post-footer">
     <div>
@@ -15,5 +35,5 @@
       <p>{{post.PostLikes.length}}</p>
     </div>
   </div>
-  <app-comment-list #commentsComponent [post]="post"></app-comment-list>
+  <app-comment-list #commentsComponent [post]="post" [currentUserId]="currentUserId"></app-comment-list>
 </div>

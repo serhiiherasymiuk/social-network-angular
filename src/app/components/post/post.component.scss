@@ -4,6 +4,12 @@
   justify-content: center;
   align-items: center;
 }
+.edit-field {
+  width: 100%;
+}
+.edit-field input {
+  width: 100%;
+}
 .post-card {
   border: 2px solid #263238;
   border-radius: 4px;
@@ -17,6 +23,12 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+}
+.post-header>div {
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 .post-body p {
   margin: 0;
@@ -33,7 +45,7 @@
 }
 .post-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content:baseline;
   align-items: center;
 }
 .post-footer p {
@@ -41,16 +53,22 @@
   font-size: 14px;
   color: #607d8b;
 }
-.comment-button {
+.comment-button, .edit-button, .delete-button {
   border: none;
   background-color: transparent;
   padding: 0;
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
   border-radius: 50%;
   margin-right: 10px;
   cursor: pointer;
 }
 .comment-button i {
-  font-size: 24px;
+  font-size: 26px;
+}
+.edit-button i, .delete-button i {
+  font-size: 20px;
+}
+.cancel-button, .save-button {
+  height: 100%;
 }

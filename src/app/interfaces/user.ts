@@ -1,4 +1,4 @@
-import { IPostComment } from "./comment";
+import { IComment } from "./comment";
 import { ICommentLike } from "./commentLike";
 import { IFollow } from "./follow";
 import { IGroupChat } from "./groupChat";
@@ -14,9 +14,8 @@ export interface IUser{
     UserName: string;
     Email: string;
     ProfilePictureUrl: string;
-
     Posts: IPost[];
-    PostComments: IPostComment[];
+    Comments: IComment[];
     PostLikes: IPostLike[];
     CommentLikes: ICommentLike[];
     Followers: IFollow[];
@@ -25,5 +24,5 @@ export interface IUser{
     GroupChats: IGroupChat[];
     IndividualChatMessages: IIndividualChatMessage[];
     GroupChatMessages: IGroupChatMessage[];
-    Notification: INotification[];
+    Notifications: INotification[];
 }
