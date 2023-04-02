@@ -7,6 +7,22 @@ import { IPost } from '../../interfaces/post';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent {
+  post: IPost = {
+    Id: 0,
+    Content: "",
+    DateCreated: new Date,
+    UserId: "currentUserId",
+    PostLikes: [],
+    Comments: [],
+  };
+  addPost() {
+    this.post.Comments = [];
+    this.post.PostLikes = [];
+    if (this.post.Content.trim() !== '') {
+      this.posts.unshift({...this.post});
+      this.post.Content = '';
+    }
+  }
   posts: IPost[] = [
     {
       Id: 1,

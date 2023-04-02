@@ -13,13 +13,13 @@ import { IComment } from '../../interfaces/comment';
         height: '*',
         opacity: 1,
         visibility: 'visible',
-        padding: 10,
+        'padding-top': 10,
       })),
       state('hide', style({
         height: 0,
         opacity: 0,
         visibility: 'hidden',
-        padding: 0,
+        'padding-top': 0,
       })),
       transition('show <=> hide', [
         animate('200ms ease-in-out')
@@ -46,7 +46,7 @@ export class CommentListComponent {
   addComment() {
     this.comment.CommentLikes = [];
     if (this.comment.Content.trim() !== '') {
-      this.post?.Comments.push({...this.comment});
+      this.post?.Comments.unshift({...this.comment});
       this.comment.Content = '';
     }
   }

@@ -4,3 +4,10 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+.post-list>div {
+  margin-top: 10px;
+  width: 635px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
