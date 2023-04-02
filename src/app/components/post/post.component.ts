@@ -23,7 +23,9 @@ export class PostComponent {
     this.isEditing = !this.isEditing;
   }
   savePost() {
-    this.post.Content = this.editedContent;
+    if (this.editedContent.trim() !== '') {
+      this.post.Content = this.editedContent;
+    }
     this.isEditing = false;
   }
   cancelEditing() {

@@ -5,9 +5,9 @@
       <p>{{ post.DateCreated | date }}</p>
     </div>
     <div>
-      <button *ngIf="post.UserId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()" mat-stroked-button>Edit</button>
-      <button *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
-      <button *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+      <button *ngIf="post.UserId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+      <button class="save-button" *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
+      <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
     </div>
   </div>
   <div class="post-body">
@@ -34,5 +34,5 @@
       <p>{{post.PostLikes.length}}</p>
     </div>
   </div>
-  <app-comment-list #commentsComponent [post]="post"></app-comment-list>
+  <app-comment-list #commentsComponent [post]="post" [currentUserId]="currentUserId"></app-comment-list>
 </div>

@@ -28,15 +28,15 @@ import { IComment } from '../../interfaces/comment';
   ]
 })
 export class CommentListComponent {
+  @Input() currentUserId: string = "";
   comment: IComment = {
     Id: 0,
     Content: "",
     DateCreated: new Date,
-    UserId: "this user",
+    UserId: "currentUserId",
     PostId: 0,
     CommentLikes: [],
   };
-
   @Input() post: IPost | undefined;
   showComments = false;
 

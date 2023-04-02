@@ -25,6 +25,7 @@
   margin-bottom: 16px;
 }
 .post-header>div {
+  height: 20px;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -52,7 +53,7 @@
   font-size: 14px;
   color: #607d8b;
 }
-.comment-button {
+.comment-button, .edit-button {
   border: none;
   background-color: transparent;
   padding: 0;
@@ -64,4 +65,10 @@
 }
 .comment-button i {
   font-size: 26px;
+}
+.edit-button i {
+  font-size: 24px;
+}
+.cancel-button, .save-button {
+  height: 100%;
 }

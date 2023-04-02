@@ -7,6 +7,7 @@ import { IComment } from 'src/app/interfaces/comment';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
+  @Input() currentUserId: string = "";
   @Input() comment: IComment = {
     Id: 0,
     Content: '',
@@ -15,4 +16,19 @@ export class CommentComponent {
     PostId: 0,
     CommentLikes: [],
   };
+  isEditing: boolean = false;
+  editedContent: string = "";
+  toggleEditing() {
+    this.editedContent = this.comment.Content;
+    this.isEditing = !this.isEditing;
+  }
+  saveComment() {
+    if (this.editedContent.trim() !== '') {
+      this.comment.Content = this.editedContent;
+    }
+    this.isEditing = false;
+  }
+  cancelEditing() {
+    this.isEditing = false;
+  }
 }
