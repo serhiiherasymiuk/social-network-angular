@@ -10,9 +10,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { PostLikeComponent } from './components/post-like/post-like.component';
 import { CommentLikeComponent } from './components/comment-like/comment-like.component';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,9 +26,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    MaterialModule
     FormsModule,
   ],
   providers: [],
