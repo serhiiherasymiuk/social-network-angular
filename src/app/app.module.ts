@@ -10,8 +10,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { PostLikeComponent } from './components/post-like/post-like.component';
 import { CommentLikeComponent } from './components/comment-like/comment-like.component';
 
-import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
     FormsModule,
   ],
   providers: [],
