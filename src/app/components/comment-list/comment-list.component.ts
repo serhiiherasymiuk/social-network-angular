@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IComment } from '../../interfaces/comment';
@@ -27,16 +28,8 @@ import { IComment } from '../../interfaces/comment';
     ])
   ]
 })
-export class CommentListComponent {
+export class CommentListComponent implements OnInit {
   @Input() currentUserId: string = "";
-  comment: IComment = {
-    Id: 0,
-    Content: "",
-    DateCreated: new Date,
-    UserId: "currentUserId",
-    PostId: 0,
-    CommentLikes: [],
-  };
   @Input() post: IPost = {
     Id: 0,
     Content: "",
@@ -45,16 +38,40 @@ export class CommentListComponent {
     PostLikes: [],
     Comments: [],
   };
+  /*comment: IComment = {
+    Id: 0,
+    Content: "",
+    DateCreated: new Date,
+    UserId: "currentUserId",
+    PostId: 0,
+    CommentLikes: [],
+  };*/
+  
+  constructor(private fb: FormBuilder) {}
+  ngOnInit(): void {
+    this.commentForm.get("UserId")?.setValue(this.currentUserId);
+  }
+  
+  commentForm = this.fb.group({
+    Content: [''],
+    DateCreated: new Date,
+    UserId: this.currentUserId,
+    PostId: this.post.Id,
+    CommentLikes: [],
+  });
+
   showComments = false;
 
   toggleComments() {
     this.showComments = !this.showComments;
   }
   addComment() {
-    this.comment.CommentLikes = [];
+    console.log(this.commentForm.value)
+    /*this.comment.CommentLikes = [];
     if (this.comment.Content.trim() !== '') {
       this.post?.Comments.unshift({...this.comment});
       this.comment.Content = '';
-    }
+    }*/
+    this.post.Content = '';
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IPost } from '../../interfaces/post';
 import { IUser } from 'src/app/interfaces/user';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-post-list',
@@ -33,13 +34,23 @@ export class PostListComponent {
     PostLikes: [],
     Comments: [],
   };
+  constructor(private fb: FormBuilder) {}
+  postForm = this.fb.group({
+    Content: [''],
+    DateCreated: new Date,
+    UserId: this.currentUser.Id,
+    Comments: [],
+    PostLikes: [],
+  });
   addPost() {
-    this.post.Comments = [];
+    console.log(this.postForm.value)
+    /*this.post.Comments = [];
     this.post.PostLikes = [];
     if (this.post.Content.trim() !== '') {
       this.posts.unshift({...this.post});
       this.post.Content = '';
-    }
+    }*/
+    this.post.Content = '';
   }
   posts: IPost[] = [
     {
