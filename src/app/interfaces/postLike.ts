@@ -1,5 +1,5 @@
-export interface IPostLike{
+export interface IPostLike {
     Id: number;
     UserId: string;
-    PostId: number;
+    PostId: number; 
 }

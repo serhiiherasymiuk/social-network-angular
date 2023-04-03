@@ -1,6 +1,5 @@
-export interface ICommentLike
-{
+export interface ICommentLike {
     Id: number;
     UserId: string;
-    CommentId: number;
+    CommentId: number; 
 }
