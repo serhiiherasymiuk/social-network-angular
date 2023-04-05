@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChatComponent } from './chat/chat.component';
+import { UserListComponent } from './chat/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { RegisterComponent } from './components/register/register.component';
     CommentLikeComponent,
     LoginComponent,
     RegisterComponent,
+    ChatComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
