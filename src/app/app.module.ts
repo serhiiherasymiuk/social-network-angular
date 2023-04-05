@@ -13,6 +13,7 @@ import { CommentLikeComponent } from './components/comment-like/comment-like.com
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
     PostLikeComponent,
     CommentLikeComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
