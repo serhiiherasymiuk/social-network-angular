@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SocialNetworkAngular';
+
+  currentComponent: string = 'app';
+
+  showComponent(component: string): void {
+    this.currentComponent = component;
+  }
+  
 }
