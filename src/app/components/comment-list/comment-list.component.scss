@@ -1,6 +1,7 @@
 .comment-list {
   padding: 10px;
   background-color: white;
+  overflow: hidden;
 }
 .comment-list h3 {
   margin-top: 0;
@@ -18,5 +19,5 @@
 .comment-list form {
   display: flex;
   flex-direction: column;
-  gap:  10px;
+  gap: 10px;
 }
