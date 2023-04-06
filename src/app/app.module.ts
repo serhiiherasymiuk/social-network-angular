@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MaterialModule } from './material/material.module';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,13 @@ import { MatChipsModule } from '@angular/material/chips';
     CommentLikeComponent,
     HomeComponent,
     SideMenuComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     MatChipsModule,
