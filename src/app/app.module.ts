@@ -18,6 +18,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MaterialModule } from './material/material.module';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
+import { MessageGroupChatComponent } from './components/message-group-chat/message-group-chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -30,6 +32,8 @@ import { RegisterComponent } from './components/register/register.component';
     CommentComponent,
     PostLikeComponent,
     CommentLikeComponent,
+    GroupChatComponent,
+    MessageGroupChatComponent,
     HomeComponent,
     SideMenuComponent,
     LoginComponent,
