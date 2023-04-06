@@ -51,3 +51,13 @@ body {
    .form input:focus{
      box-shadow: 0 1px 0 rgba(0,0,0,0.2);
    }
+   .form input.button{
+    color: #fff;
+    background: #009579;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+  }
