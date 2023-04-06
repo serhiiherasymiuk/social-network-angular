@@ -7,6 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <app-home></app-home>
+    <div class="container">
+        <input type="checkbox" id="check">
+        <div class="login form">
+          <header>Select option</header>
+          <form action="#">
+            <input (click)="showComponent('login')" type="button" class="button" value="Login">
+            <input (click)="showComponent('register')" type="button" class="button" value="Signup">
+          </form>
+        </div>
+    </div>
+
+    <ng-container *ngIf="currentComponent === 'login'">
+        <app-login></app-login>
+    </ng-container>
+      
+    <ng-container *ngIf="currentComponent === 'register'">
+        <app-register></app-register>
+    </ng-container>
+
 </body>
 </html>
