@@ -12,6 +12,8 @@ import { CommentLikeComponent } from './components/comment-like/comment-like.com
 
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
+import { MessageGroupChatComponent } from './components/message-group-chat/message-group-chat.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MaterialModule } from './material/material.module';
     CommentComponent,
     PostLikeComponent,
     CommentLikeComponent,
+    GroupChatComponent,
+    MessageGroupChatComponent,
   ],
   imports: [
     BrowserModule,
