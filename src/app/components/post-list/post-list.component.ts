@@ -44,12 +44,12 @@ export class PostListComponent {
   });
   addPost() {
     console.log(this.postForm.value)
-    /*this.post.Comments = [];
+    this.post.Comments = [];
     this.post.PostLikes = [];
     if (this.post.Content.trim() !== '') {
       this.posts.unshift({...this.post});
       this.post.Content = '';
-    }*/
+    }
     this.post.Content = '';
   }
   posts: IPost[] = [

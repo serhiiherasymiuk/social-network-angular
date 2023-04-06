@@ -4,7 +4,8 @@
       <button type="submit" mat-stroked-button>Comment</button>
       <mat-form-field class="comment-field" appearance="outline">
         <mat-label>Leave a comment</mat-label>
-          <textarea       
+          <textarea
+            [(ngModel)]="comment.Content"       
             formControlName="Content"     
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"

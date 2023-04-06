@@ -38,14 +38,14 @@ export class CommentListComponent implements OnInit {
     PostLikes: [],
     Comments: [],
   };
-  /*comment: IComment = {
+  comment: IComment = {
     Id: 0,
     Content: "",
     DateCreated: new Date,
     UserId: "currentUserId",
     PostId: 0,
     CommentLikes: [],
-  };*/
+  };
   
   constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
@@ -65,13 +65,14 @@ export class CommentListComponent implements OnInit {
   toggleComments() {
     this.showComments = !this.showComments;
   }
+
   addComment() {
     console.log(this.commentForm.value)
-    /*this.comment.CommentLikes = [];
+    this.comment.CommentLikes = [];
     if (this.comment.Content.trim() !== '') {
       this.post?.Comments.unshift({...this.comment});
       this.comment.Content = '';
-    }*/
-    this.post.Content = '';
+    }
+    this.comment.Content = ""
   }
 }
