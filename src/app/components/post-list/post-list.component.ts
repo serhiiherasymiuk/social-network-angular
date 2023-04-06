@@ -94,5 +94,55 @@ export class PostListComponent {
       Comments: [],
       PostLikes: [],
     },
+    {
+      Id: 4,
+      Content: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
+      DateCreated: new Date(),
+      UserId: 'user4',
+      Comments: [
+        {
+          Id: 5,
+          Content: 'I had always wondered about the origin of Lorem Ipsum.',
+          DateCreated: new Date(),
+          UserId: 'user7',
+          PostId: 4,
+          CommentLikes: [],
+        },
+        {
+          Id: 6,
+          Content: 'It is interesting to learn about the history of Lorem Ipsum.',
+          DateCreated: new Date(),
+          UserId: 'user8',
+          PostId: 4,
+          CommentLikes: [],
+        },
+      ],
+      PostLikes: [],
+    },
+    {
+      Id: 5,
+      Content: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.',
+      DateCreated: new Date(),
+      UserId: 'user5',
+      Comments: [],
+      PostLikes: [],
+    },
+    {
+      Id: 6,
+      Content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      DateCreated: new Date(),
+      UserId: 'user6',
+      Comments: [
+        {
+          Id: 7,
+          Content: 'Ive always found Lorem Ipsum to be fascinating.',
+          DateCreated: new Date(),
+          UserId: 'user9',
+          PostId: 6,
+          CommentLikes: [],
+        },
+      ],
+      PostLikes: [],
+    },
   ];
 }

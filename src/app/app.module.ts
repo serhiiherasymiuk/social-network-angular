@@ -15,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     PostLikeComponent,
     CommentLikeComponent,
     HomeComponent,
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

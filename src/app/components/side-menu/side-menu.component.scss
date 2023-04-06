@@ -1,0 +1,11 @@
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+    padding: 0 10px;
+}
+.custom-chip-size {
+    font-size: 24px;
+    padding: 8px;
+}
