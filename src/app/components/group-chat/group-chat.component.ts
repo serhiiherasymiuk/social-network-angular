@@ -91,76 +91,83 @@ chats: IGroupChat[]=[
 ]
 
 chat : IGroupChat={
-  Id:0,
-  Name:"",
-  Members:[],
-  Messages:[]
-  
-  // Id:1,
-  // Name:"chat",
+
+  // Id:0,
+  // Name:"",
   // Members:[],
-  // Messages:[{
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User1",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User2",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User1",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User2",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User1",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User",
-  // GroupChatId: 1
-  // },
-  // {
-  //   Id:1,
-  // Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
-  // DateSent: new Date(2023,4,5,19,2),
-  // SenderId: "User2",
-  // GroupChatId: 1
-  // }]
+  // Messages:[]
+  
+  Id:1,
+  Name:"chat",
+  Members:[],
+  Messages:[{
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User1",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User2",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User1",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User2",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User1",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User",
+  GroupChatId: 1
+  },
+  {
+    Id:1,
+  Content: "ffyfydi uydlhugfhkigjygfthftdhh kjf",
+  DateSent: new Date(2023,4,5,19,2),
+  SenderId: "User2",
+  GroupChatId: 1
+  }]
+}
+
+
+
+send() {
+
 }
 }
