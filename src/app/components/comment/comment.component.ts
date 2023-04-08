@@ -8,24 +8,24 @@ import { IComment } from 'src/app/interfaces/comment';
 })
 export class CommentComponent {
   @Input() currentUserId: string = "";
-  @Input() comments: IComment[] = [];
+  @Input() comments: IComment[] | undefined = [] ;
   @Input() comment: IComment = {
-    Id: 0,
-    Content: '',
-    DateCreated: new Date,
-    UserId: '',
-    PostId: 0,
-    CommentLikes: [],
+    id: 0,
+    content: '',
+    dateCreated: new Date,
+    userId: '',
+    postId: 0,
+    commentLikes: [],
   };
   isEditing: boolean = false;
   editedContent: string = "";
   toggleEditing() {
-    this.editedContent = this.comment.Content;
+    this.editedContent = this.comment.content;
     this.isEditing = !this.isEditing;
   }
   saveComment() {
     if (this.editedContent.trim() !== '') {
-      this.comment.Content = this.editedContent;
+      this.comment.content = this.editedContent;
     }
     this.isEditing = false;
   }
@@ -33,7 +33,8 @@ export class CommentComponent {
     this.isEditing = false;
   }
   deleteComment() {
-    var index = this.comments.indexOf(this.comment);
-    this.comments.splice(index, 1);
+    var index = this.comments?.indexOf(this.comment);
+    if (index != undefined)
+      this.comments?.splice(index, 1);
   }
 }

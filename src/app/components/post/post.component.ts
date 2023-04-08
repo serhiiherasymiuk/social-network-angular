@@ -10,22 +10,22 @@ export class PostComponent {
   @Input() currentUserId: string = "";
   @Input() posts: IPost[] = [];
   @Input() post: IPost = {
-    Id: 0,
-    Content: '',
-    DateCreated: new Date,
-    UserId: this.currentUserId,
-    Comments: [],
-    PostLikes: [],
+    id: 0,
+    content: '',
+    dateCreated: new Date,
+    userId: this.currentUserId,
+    comments: [],
+    postLikes: [],
   };
   isEditing: boolean = false;
   editedContent: string = "";
   toggleEditing() {
-    this.editedContent = this.post.Content;
+    this.editedContent = this.post.content;
     this.isEditing = !this.isEditing;
   }
   savePost() {
     if (this.editedContent.trim() !== '') {
-      this.post.Content = this.editedContent;
+      this.post.content = this.editedContent;
     }
     this.isEditing = false;
   }

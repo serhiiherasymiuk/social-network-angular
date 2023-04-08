@@ -5,8 +5,8 @@
       <mat-form-field class="comment-field" appearance="outline">
         <mat-label>Leave a comment</mat-label>
           <textarea
-            [(ngModel)]="comment.Content"       
-            formControlName="Content"     
+            [(ngModel)]="comment.content"       
+            formControlName="content"     
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
@@ -16,6 +16,6 @@
     </form>
   </div>
   <ul>
-    <app-comment *ngFor="let comment of post?.Comments" [comment]="comment" [currentUserId]="currentUserId" [comments]="post.Comments"></app-comment>
+    <app-comment *ngFor="let comment of post?.comments" [comment]="comment" [currentUserId]="currentUserId" [comments]="post.comments"></app-comment>
   </ul>
 </div>

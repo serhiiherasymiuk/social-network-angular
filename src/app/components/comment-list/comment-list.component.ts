@@ -31,20 +31,20 @@ import { IComment } from '../../interfaces/comment';
 export class CommentListComponent implements OnInit {
   @Input() currentUserId: string = "";
   @Input() post: IPost = {
-    Id: 0,
-    Content: "",
-    DateCreated: new Date,
-    UserId: "",
-    PostLikes: [],
-    Comments: [],
+    id: 0,
+    content: "",
+    dateCreated: new Date,
+    userId: "",
+    postLikes: [],
+    comments: [],
   };
   comment: IComment = {
-    Id: 0,
-    Content: "",
-    DateCreated: new Date,
-    UserId: "currentUserId",
-    PostId: 0,
-    CommentLikes: [],
+    id: 0,
+    content: "",
+    dateCreated: new Date,
+    userId: "currentUserId",
+    postId: 0,
+    commentLikes: [],
   };
   
   constructor(private fb: FormBuilder) {}
@@ -56,7 +56,7 @@ export class CommentListComponent implements OnInit {
     Content: [''],
     DateCreated: new Date,
     UserId: this.currentUserId,
-    PostId: this.post.Id,
+    PostId: this.post.id,
     CommentLikes: [],
   });
 
@@ -68,11 +68,11 @@ export class CommentListComponent implements OnInit {
 
   addComment() {
     console.log(this.commentForm.value)
-    this.comment.CommentLikes = [];
-    if (this.comment.Content.trim() !== '') {
-      this.post?.Comments.unshift({...this.comment});
-      this.comment.Content = '';
+    this.comment.commentLikes = [];
+    if (this.comment.content.trim() !== '') {
+      this.post.comments?.unshift({...this.comment});
+      this.comment.content = '';
     }
-    this.comment.Content = ""
+    this.comment.content = ""
   }
 }

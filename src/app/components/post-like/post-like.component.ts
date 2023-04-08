@@ -14,17 +14,19 @@ export class PostLikeComponent {
   toggleLike() {
     this.liked = !this.liked;
     const userId = 'user123';
-    const existingLikeIndex = this.post?.PostLikes.findIndex(like => like.UserId === userId);
-    if (existingLikeIndex !== undefined && existingLikeIndex >= 0) {
-      this.post?.PostLikes.splice(existingLikeIndex, 1);
-    } 
-    else {
-      const newLike: IPostLike = {
-        Id: 0,
-        UserId: userId,
-        PostId: this.post?.Id || 0
-      };
-      this.post?.PostLikes.push(newLike);
+    if(this.post?.postLikes != undefined) {
+      const existingLikeIndex = this.post?.postLikes.findIndex(like => like.UserId === userId);
+      if (existingLikeIndex !== undefined && existingLikeIndex >= 0) {
+        this.post?.postLikes.splice(existingLikeIndex, 1);
+      } 
+      else {
+        const newLike: IPostLike = {
+          Id: 0,
+          UserId: userId,
+          PostId: this.post?.id || 0
+        };
+        this.post?.postLikes.push(newLike);
+      }
     }
   }
 }

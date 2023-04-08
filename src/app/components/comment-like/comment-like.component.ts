@@ -14,17 +14,17 @@ export class CommentLikeComponent {
   toggleLike() {
     this.liked = !this.liked;
     const userId = 'user123';
-    const existingLikeIndex = this.comment?.CommentLikes.findIndex(like => like.UserId === userId);
+    const existingLikeIndex = this.comment?.commentLikes.findIndex(like => like.UserId === userId);
     if (existingLikeIndex !== undefined && existingLikeIndex >= 0) {
-      this.comment?.CommentLikes.splice(existingLikeIndex, 1);
+      this.comment?.commentLikes.splice(existingLikeIndex, 1);
     } 
     else {
       const newLike: ICommentLike = {
         Id: 0,
         UserId: userId,
-        CommentId: this.comment?.Id || 0
+        CommentId: this.comment?.id || 0
       };
-      this.comment?.CommentLikes.push(newLike);
+      this.comment?.commentLikes.push(newLike);
     }
   }
 }
