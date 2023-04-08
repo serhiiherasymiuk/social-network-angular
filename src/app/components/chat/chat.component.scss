@@ -115,13 +115,22 @@ body {
 
 .name {
   position: absolute;
-  top: 22px;
+  top: 12px;
   text-transform: uppercase;
   color: $dark;
   font-size: .8em;
   letter-spacing: 2px;
   font-weight: 500;
   left: 60px;
+  margin-bottom: 20px;
+  height: 40px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #4c515d;
+  border-bottom: 1px solid #d3d6df;
+  overflow: hidden;
 }
 
 .menu {
