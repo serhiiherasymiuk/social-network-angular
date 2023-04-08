@@ -14,8 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ChatComponent } from './chat/chat.component';
-import { UserListComponent } from './chat/user-list/user-list.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UserListComponent } from './components/chat/user-list/user-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MessageComponent } from './components/chat/message/message.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,18 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     RegisterComponent,
     ChatComponent,
     UserListComponent,
+    MessageComponent
+
+    
+
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
