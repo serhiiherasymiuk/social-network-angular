@@ -14,4 +14,11 @@ export class AppComponent {
 
 
 
+  currentComponent: string = 'app';
+
+  showComponent(component: string): void {
+    this.currentComponent = component;
+  }
+  
+
 }

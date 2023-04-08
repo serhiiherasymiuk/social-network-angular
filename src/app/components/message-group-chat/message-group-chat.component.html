@@ -1,0 +1,24 @@
+<div *ngIf="message.SenderId != currentUserId; else currentMessage">
+    <div class="container">
+        <div class="example-header-image">
+            <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+        </div>
+        <div class="message senderMes">
+            <span class="senderName">{{message.SenderId}}</span>
+            <div>
+                <div class="mesContent">{{message.Content}}</div> 
+                <span class="date">{{message.DateSent | date:"medium"}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #currentMessage>
+    <!-- <div class="container"> -->
+        <div class="contSen">
+            <div class="message currentMes">
+                    <div class="mesContent">{{message.Content}}</div> 
+                    <span class="date">{{message.DateSent | date:"medium"}}</span>
+                </div>
+        </div>
+    <!-- </div> -->
+</ng-template>

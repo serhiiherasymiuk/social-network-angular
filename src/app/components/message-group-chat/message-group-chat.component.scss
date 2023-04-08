@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    margin: 20px;
+}
+.message{
+    border: 1px solid black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    padding: 10px;
+    width: max-content;
+    max-width: 500px;
+    margin-left: 10px;
+}
+.senderMes{
+    background-color: #ccffff;
+}
+.contSen{
+    text-align: right;
+    
+    margin: 20px;
+}
+.currentMes{
+    display: inline-block;
+    text-align-last: end;
+    background-color: #66ccff;
+     text-align: start;
+}
+.senderName{
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.date{
+    margin: 0 10px;
+}
+
+.example-header-image >img{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+}
+
+.mesContent{
+    margin: 5px 0;
+}
+

@@ -1,15 +1,19 @@
 <div [@showHideComments]="showComments ? 'show' : 'hide'" class="comment-list">
   <div>
-    <button (click)="addComment()" mat-stroked-button>Comment</button>
-    <mat-form-field class="comment-field" appearance="outline">
-      <mat-label>Leave a comment</mat-label>
-      <textarea           
-        cdkTextareaAutosize
-        #autosize="cdkTextareaAutosize"
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="10" 
-        matInput [(ngModel)]="comment.Content" type="text"></textarea>
-    </mat-form-field>
+    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+      <button type="submit" mat-stroked-button>Comment</button>
+      <mat-form-field class="comment-field" appearance="outline">
+        <mat-label>Leave a comment</mat-label>
+          <textarea
+            [(ngModel)]="comment.Content"       
+            formControlName="Content"     
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="10" 
+            matInput type="text"></textarea>
+      </mat-form-field>
+    </form>
   </div>
   <ul>
     <app-comment *ngFor="let comment of post?.Comments" [comment]="comment" [currentUserId]="currentUserId" [comments]="post.Comments"></app-comment>
