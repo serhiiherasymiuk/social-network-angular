@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+
+    <!-- <app-post-list></app-post-list> -->
+    <!--<app-login></app-login>-->
+    <!-- <app-register></app-register> -->
+
+    <!-- <app-user-list></app-user-list>-->
+     <div class="container">
+    
+        <router-outlet></router-outlet>
+     </div>
+
     <div class="container">
         <input type="checkbox" id="check">
         <div class="login form">
@@ -25,6 +36,7 @@
     <ng-container *ngIf="currentComponent === 'register'">
         <app-register></app-register>
     </ng-container>
+
 
 </body>
 </html>

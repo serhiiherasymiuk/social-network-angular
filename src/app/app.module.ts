@@ -22,6 +22,10 @@ import { GroupChatComponent } from './components/group-chat/group-chat.component
 import { MessageGroupChatComponent } from './components/message-group-chat/message-group-chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UserListComponent } from './components/chat/user-list/user-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MessageComponent } from './components/chat/message/message.component';
 
 @NgModule({
   declarations: [
@@ -38,14 +42,25 @@ import { RegisterComponent } from './components/register/register.component';
     SideMenuComponent,
     LoginComponent,
     RegisterComponent,
+    ChatComponent,
+    UserListComponent,
+    MessageComponent
+
+    
+
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+
+    AppRoutingModule,
+
     ReactiveFormsModule,
     MatChipsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
