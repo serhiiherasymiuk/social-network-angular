@@ -26,6 +26,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { UserListComponent } from './components/chat/user-list/user-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MessageComponent } from './components/chat/message/message.component';
+import { MatChip } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -45,10 +46,6 @@ import { MessageComponent } from './components/chat/message/message.component';
     ChatComponent,
     UserListComponent,
     MessageComponent
-
-    
-
-
   ],
   imports: [
     BrowserModule,
@@ -60,7 +57,7 @@ import { MessageComponent } from './components/chat/message/message.component';
 
     ReactiveFormsModule,
     MatChipsModule,
-
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
