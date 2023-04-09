@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/interfaces/user';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SocialNetworkAngular';
+
+
+
+  currentComponent: string = 'app';
+
+  showComponent(component: string): void {
+    this.currentComponent = component;
+  }
+  
+
 }
