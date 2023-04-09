@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IComment } from '../../interfaces/comment';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -30,34 +31,36 @@ import { IComment } from '../../interfaces/comment';
 })
 export class CommentListComponent implements OnInit {
   @Input() currentUserId: string = "";
+  @Input() currentUserName: string = "";
   @Input() post: IPost = {
-    Id: 0,
-    Content: "",
-    DateCreated: new Date,
-    UserId: "",
-    PostLikes: [],
-    Comments: [],
+    id: 0,
+    content: "",
+    dateCreated: new Date,
+    userId: "",
+    postLikes: [],
+    comments: [],
   };
   comment: IComment = {
-    Id: 0,
-    Content: "",
-    DateCreated: new Date,
-    UserId: "currentUserId",
-    PostId: 0,
-    CommentLikes: [],
+    id: 0,
+    content: "",
+    dateCreated: new Date,
+    userId: "currentUserId",
+    postId: 0,
+    commentLikes: [],
   };
   
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private commentService: CommentService) {}
   ngOnInit(): void {
-    this.commentForm.get("UserId")?.setValue(this.currentUserId);
+    this.commentForm.get("userId")?.setValue(this.currentUserId);
+    this.commentForm.get("postId")?.setValue(this.post.id);
   }
   
   commentForm = this.fb.group({
-    Content: [''],
-    DateCreated: new Date,
-    UserId: this.currentUserId,
-    PostId: this.post.Id,
-    CommentLikes: [],
+    content: [''],
+    dateCreated: new Date,
+    userId: this.currentUserId,
+    postId: this.post.id,
+    commentLikes: [],
   });
 
   showComments = false;
@@ -67,12 +70,13 @@ export class CommentListComponent implements OnInit {
   }
 
   addComment() {
-    console.log(this.commentForm.value)
-    this.comment.CommentLikes = [];
-    if (this.comment.Content.trim() !== '') {
-      this.post?.Comments.unshift({...this.comment});
-      this.comment.Content = '';
+    this.comment.commentLikes = [];
+    if (this.comment.content.trim() !== '') {
+      this.commentService.create(this.commentForm.value as IComment).subscribe(res => {
+        this.commentService.getAll().subscribe(res => this.post.comments = res)
+      });
+      this.comment.content = '';
     }
-    this.comment.Content = ""
+    this.comment.content = ""
   }
 }

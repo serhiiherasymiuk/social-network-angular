@@ -1,5 +1,5 @@
 export interface IPostLike {
-    Id: number;
-    UserId: string;
-    PostId: number; 
+    id: number;
+    userId: string;
+    postId: number; 
 }

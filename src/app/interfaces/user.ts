@@ -10,19 +10,19 @@ import { IPost } from "./post";
 import { IPostLike } from "./postLike";
 
 export interface IUser{
-    Id: string;
-    UserName: string;
-    Email: string;
-    ProfilePictureUrl: string;
-    Posts: IPost[];
-    Comments: IComment[];
-    PostLikes: IPostLike[];
-    CommentLikes: ICommentLike[];
-    Followers: IFollow[];
-    FollowedUsers: IFollow[];
-    IndividualChats: IIndividualChat[];
-    GroupChats: IGroupChat[];
-    IndividualChatMessages: IIndividualChatMessage[];
-    GroupChatMessages: IGroupChatMessage[];
-    Notifications: INotification[];
+    id: string;
+    userName: string;
+    email: string;
+    profilePictureUrl: string;
+    posts: IPost[];
+    comments: IComment[];
+    postLikes: IPostLike[];
+    commentLikes: ICommentLike[];
+    followers: IFollow[];
+    followedUsers: IFollow[];
+    individualChats: IIndividualChat[];
+    groupChats: IGroupChat[];
+    individualChatMessages: IIndividualChatMessage[];
+    groupChatMessages: IGroupChatMessage[];
+    notifications: INotification[];
 }

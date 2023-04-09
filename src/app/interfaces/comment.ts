@@ -1,10 +1,10 @@
 import { ICommentLike } from "./commentLike";
 
 export interface IComment {
-    Id: number;
-    Content: string;
-    DateCreated: Date;
-    UserId: string;
-    PostId: number;
-    CommentLikes: ICommentLike[];
+    id: number;
+    content: string;
+    dateCreated: Date;
+    userId: string;
+    postId: number;
+    commentLikes?: ICommentLike[];
 }

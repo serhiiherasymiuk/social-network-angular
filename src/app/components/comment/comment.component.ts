@@ -1,31 +1,39 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
+import { CommentLikeService } from 'src/app/services/comment-like.service';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss']
 })
-export class CommentComponent {
+export class CommentComponent implements OnInit{
+  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService) {}
+  ngOnInit(): void {
+    this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);
+  }
   @Input() currentUserId: string = "";
-  @Input() comments: IComment[] = [];
+  @Input() currentUserName: string = "";
+  @Input() comments: IComment[] | undefined = [] ;
   @Input() comment: IComment = {
-    Id: 0,
-    Content: '',
-    DateCreated: new Date,
-    UserId: '',
-    PostId: 0,
-    CommentLikes: [],
+    id: 0,
+    content: '',
+    dateCreated: new Date,
+    userId: '',
+    postId: 0,
+    commentLikes: [],
   };
   isEditing: boolean = false;
   editedContent: string = "";
   toggleEditing() {
-    this.editedContent = this.comment.Content;
+    this.editedContent = this.comment.content;
     this.isEditing = !this.isEditing;
   }
   saveComment() {
-    if (this.editedContent.trim() !== '') {
-      this.comment.Content = this.editedContent;
+    if (this.editedContent.trim() != '') {
+      this.comment.content = this.editedContent;
+      this.commentService.edit(this.comment).subscribe();
     }
     this.isEditing = false;
   }
@@ -33,7 +41,10 @@ export class CommentComponent {
     this.isEditing = false;
   }
   deleteComment() {
-    var index = this.comments.indexOf(this.comment);
-    this.comments.splice(index, 1);
+    var index = this.comments?.indexOf(this.comment);
+    if (index != undefined) {
+      this.commentService.delete(this.comment.id).subscribe();;
+      this.comments?.splice(index, 1);
+    }
   }
 }
