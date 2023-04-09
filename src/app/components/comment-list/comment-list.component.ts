@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IComment } from '../../interfaces/comment';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -30,6 +31,7 @@ import { IComment } from '../../interfaces/comment';
 })
 export class CommentListComponent implements OnInit {
   @Input() currentUserId: string = "";
+  @Input() currentUserName: string = "";
   @Input() post: IPost = {
     id: 0,
     content: "",
@@ -47,17 +49,18 @@ export class CommentListComponent implements OnInit {
     commentLikes: [],
   };
   
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private commentService: CommentService) {}
   ngOnInit(): void {
-    this.commentForm.get("UserId")?.setValue(this.currentUserId);
+    this.commentForm.get("userId")?.setValue(this.currentUserId);
+    this.commentForm.get("postId")?.setValue(this.post.id);
   }
   
   commentForm = this.fb.group({
-    Content: [''],
-    DateCreated: new Date,
-    UserId: this.currentUserId,
-    PostId: this.post.id,
-    CommentLikes: [],
+    content: [''],
+    dateCreated: new Date,
+    userId: this.currentUserId,
+    postId: this.post.id,
+    commentLikes: [],
   });
 
   showComments = false;
@@ -67,10 +70,11 @@ export class CommentListComponent implements OnInit {
   }
 
   addComment() {
-    console.log(this.commentForm.value)
     this.comment.commentLikes = [];
     if (this.comment.content.trim() !== '') {
-      this.post.comments?.unshift({...this.comment});
+      this.commentService.create(this.commentForm.value as IComment).subscribe(res => {
+        this.commentService.getAll().subscribe(res => this.post.comments = res)
+      });
       this.comment.content = '';
     }
     this.comment.content = ""

@@ -1,30 +1,43 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
 import { ICommentLike } from 'src/app/interfaces/commentLike';
+import { CommentLikeService } from 'src/app/services/comment-like.service';
 
 @Component({
   selector: 'app-comment-like',
   templateUrl: './comment-like.component.html',
   styleUrls: ['./comment-like.component.scss']
 })
-export class CommentLikeComponent {
-  @Input() comment: IComment | undefined;
-  liked = false;
+export class CommentLikeComponent implements OnInit {
+  constructor(private commentLikeService: CommentLikeService) {}
+  ngOnInit(): void {
+    this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => {
+      const existingLikeIndex = res.findIndex(like => like.userId == this.currentUserId);
+      if(existingLikeIndex != undefined && existingLikeIndex >= 0)
+        this.liked = true;
+    });
+  }
+  @Input() currentUserId: string = ''
+  @Input() comment!: IComment;
+  liked: boolean = false;
 
   toggleLike() {
     this.liked = !this.liked;
-    const userId = 'user123';
-    const existingLikeIndex = this.comment?.commentLikes.findIndex(like => like.UserId === userId);
-    if (existingLikeIndex !== undefined && existingLikeIndex >= 0) {
-      this.comment?.commentLikes.splice(existingLikeIndex, 1);
-    } 
+    const existingLikeIndex = this.comment?.commentLikes?.findIndex(like => like.userId == this.currentUserId);
+    if (existingLikeIndex != undefined && existingLikeIndex >= 0) {
+      const existingLikeId = this.comment?.commentLikes?.[existingLikeIndex]?.id ?? 0;
+      this.commentLikeService.delete(existingLikeId).subscribe();
+      this.comment?.commentLikes?.splice(existingLikeIndex, 1);
+    }
     else {
       const newLike: ICommentLike = {
-        Id: 0,
-        UserId: userId,
-        CommentId: this.comment?.id || 0
+        id: 0,
+        userId: this.currentUserId,
+        commentId: this.comment?.id || 0
       };
-      this.comment?.commentLikes.push(newLike);
+      this.commentLikeService.create(newLike).subscribe(res => {
+        this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res)
+      })
     }
   }
 }

@@ -1,7 +1,7 @@
 <div class="post-card">
   <div class="post-header">
     <div>
-      <p>{{ post.userId }}</p>
+      <p>{{ currentUserName }}</p>
       <p>{{ post.dateCreated | date }}</p>
     </div>
     <div>
@@ -31,9 +31,13 @@
         <p>{{post.comments?.length}}</p>
     </div>
     <div>
-      <app-post-like #postLikeComponent [post]="post"></app-post-like>
+      <app-post-like #postLikeComponent [post]="post" [currentUserId]="currentUserId"></app-post-like>
       <p>{{post.postLikes?.length}}</p>
     </div>
   </div>
-  <app-comment-list #commentsComponent [post]="post" [currentUserId]="currentUserId"></app-comment-list>
+  <app-comment-list #commentsComponent 
+    [post]="post" 
+    [currentUserId]="currentUserId" 
+    [currentUserName]="currentUserName">
+  </app-comment-list>
 </div>

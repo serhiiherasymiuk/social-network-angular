@@ -1,13 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
+import { CommentLikeService } from 'src/app/services/comment-like.service';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss']
 })
-export class CommentComponent {
+export class CommentComponent implements OnInit{
+  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService) {}
+  ngOnInit(): void {
+    this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);
+  }
   @Input() currentUserId: string = "";
+  @Input() currentUserName: string = "";
   @Input() comments: IComment[] | undefined = [] ;
   @Input() comment: IComment = {
     id: 0,
@@ -24,8 +31,9 @@ export class CommentComponent {
     this.isEditing = !this.isEditing;
   }
   saveComment() {
-    if (this.editedContent.trim() !== '') {
+    if (this.editedContent.trim() != '') {
       this.comment.content = this.editedContent;
+      this.commentService.edit(this.comment).subscribe();
     }
     this.isEditing = false;
   }
@@ -34,7 +42,9 @@ export class CommentComponent {
   }
   deleteComment() {
     var index = this.comments?.indexOf(this.comment);
-    if (index != undefined)
+    if (index != undefined) {
+      this.commentService.delete(this.comment.id).subscribe();;
       this.comments?.splice(index, 1);
+    }
   }
 }

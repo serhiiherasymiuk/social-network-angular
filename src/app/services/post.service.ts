@@ -24,7 +24,11 @@ export class PostService {
     return this.http.delete(`${this.api}/${id}`);
   }
 
-  create(movie: IPost): Observable<any> {
-    return this.http.post(this.api, movie);
+  create(post: IPost): Observable<any> {
+    return this.http.post(this.api, post);
+  }
+
+  edit(post: IPost): Observable<any> {
+    return this.http.put(this.api, post);
   }
 }

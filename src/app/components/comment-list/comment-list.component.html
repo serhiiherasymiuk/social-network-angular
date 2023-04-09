@@ -11,11 +11,17 @@
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="10" 
-            matInput type="text"></textarea>
+            matInput type="text">
+          </textarea>
       </mat-form-field>
     </form>
   </div>
   <ul>
-    <app-comment *ngFor="let comment of post?.comments" [comment]="comment" [currentUserId]="currentUserId" [comments]="post.comments"></app-comment>
+    <app-comment *ngFor="let comment of post?.comments" 
+      [comment]="comment" 
+      [currentUserId]="currentUserId" 
+      [currentUserName]="currentUserName" 
+      [comments]="post.comments">
+    </app-comment>
   </ul>
 </div>

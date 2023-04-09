@@ -1,13 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IPost } from '../../interfaces/post';
+import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
+import { IUser } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent {
-  @Input() currentUserId: string = "";
+export class PostComponent{
+  @Input() currentUserId: string = ''
+  @Input() currentUserName: string = ''
   @Input() posts: IPost[] = [];
   @Input() post: IPost = {
     id: 0,
@@ -17,6 +21,7 @@ export class PostComponent {
     comments: [],
     postLikes: [],
   };
+  constructor(private postService: PostService) {}
   isEditing: boolean = false;
   editedContent: string = "";
   toggleEditing() {
@@ -26,6 +31,7 @@ export class PostComponent {
   savePost() {
     if (this.editedContent.trim() !== '') {
       this.post.content = this.editedContent;
+      this.postService.edit(this.post).subscribe();;
     }
     this.isEditing = false;
   }
@@ -33,7 +39,7 @@ export class PostComponent {
     this.isEditing = false;
   }
   deletePost() {
-    var index = this.posts.indexOf(this.post);
-    this.posts.splice(index, 1);
+    this.posts.splice(this.posts.indexOf(this.post), 1);
+    this.postService.delete(this.post.id).subscribe();;
   }
 }
