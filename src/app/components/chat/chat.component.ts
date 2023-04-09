@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit{
     this.route.params.subscribe(params => {
 
       let id = params['id'];
-      this.user = USERS.find(x => x.Id == id);
+      this.user = USERS.find(x => x.id == id);
     });
   }
   ngOnInit(): void {}
@@ -43,6 +43,4 @@ export class ChatComponent implements OnInit{
         this.message.Content ='';
     }  
   }
-
-
 }
