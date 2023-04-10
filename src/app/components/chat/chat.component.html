@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="chatbox">
+    <div class="top-bar">
+      <div><img class="avatar" src={{user?.profilePictureUrl}} alt=""></div>
+      <div class="name"><span [routerLink]="['/users']">{{user?.userName}}</span></div>
+      <div class="icons">
+        <i class="fas fa-phone"></i>
+        <i class="fas fa-video"></i>
+      </div>
+      <div class="menu" >
+        <div class="dots"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="middle"  *ngFor="let mas of messages">
+          <div class="incoming">
+            <div class="bubble">
+              <span>{{mas.Content}}</span> 
+              <span class="time">{{mas.DateSent|date:'short' }}</span></div>
+            </div>
+          </div>
+        </div>
+      <div>        
+    </div>
+      <div class="bottom-bar">
+      <div class="chat">
+        <input
+        type="text"
+        [(ngModel)]="message.Content"
+        placeholder="Type a new message"
+        (keyup.enter)="sendMessage()"
+        />
+        <button type="submit" (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 <li class="comment">
     <div class="comment-header">
         <div>
-            <p>{{ comment.UserId }}</p>
-            <p>{{ comment.DateCreated | date }}</p>
+            <p>{{ currentUserName }}</p>
+            <p>{{ comment.dateCreated | date }}</p>
         </div>
         <div>
-            <button *ngIf="comment.UserId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
-            <button *ngIf="comment.UserId === currentUserId && !isEditing" class="delete-button" (click)="deleteComment()"><i class="bi bi-trash3"></i></button>
+            <button *ngIf="comment.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+            <button *ngIf="comment.userId === currentUserId && !isEditing" class="delete-button" (click)="deleteComment()"><i class="bi bi-trash3"></i></button>
             <button class="save-button" *ngIf="isEditing" (click)="saveComment()" mat-stroked-button>Save</button>
             <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
         </div>
@@ -20,15 +20,15 @@
                 #autosize="cdkTextareaAutosize"
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="10" 
-                matInput [(ngModel)]="editedContent" [value]="comment.Content" type="text"></textarea>
+                matInput [(ngModel)]="editedContent" [value]="comment.content" type="text"></textarea>
             </mat-form-field>
         </div>
-        <p *ngIf="!isEditing">{{ comment.Content }}</p>
+        <p *ngIf="!isEditing">{{ comment.content }}</p>
     </div>
     <div class="comment-footer">
         <div>
-            <app-comment-like #commentLikeComponent [comment]="comment"></app-comment-like>
-            <p>{{ comment.CommentLikes.length }}</p>
+            <app-comment-like #commentLikeComponent [comment]="comment" [currentUserId]="currentUserId"></app-comment-like>
+            <p>{{ comment.commentLikes?.length }}</p>
         </div>
     </div>
 </li>

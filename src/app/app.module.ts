@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './components/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +23,12 @@ import { GroupChatComponent } from './components/group-chat/group-chat.component
 import { MessageGroupChatComponent } from './components/message-group-chat/message-group-chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UserListComponent } from './components/chat/user-list/user-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MessageComponent } from './components/chat/message/message.component';
+import { MatChip } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -38,14 +45,23 @@ import { RegisterComponent } from './components/register/register.component';
     SideMenuComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
+    ChatComponent,
+    UserListComponent,
+    MessageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+
+    AppRoutingModule,
+
     ReactiveFormsModule,
     MatChipsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

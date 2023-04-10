@@ -1,5 +1,5 @@
 export interface ICommentLike {
-    Id: number;
-    UserId: string;
-    CommentId: number; 
+    id: number;
+    userId: string;
+    commentId: number; 
 }

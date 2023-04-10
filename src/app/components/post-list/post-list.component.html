@@ -4,14 +4,20 @@
     <mat-form-field appearance="outline">
       <mat-label>Leave a post</mat-label>
       <textarea    
-        [(ngModel)]="post.Content"
-        formControlName="Content"
+        [(ngModel)]="post.content"
+        formControlName="content"
         cdkTextareaAutosize
         #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="10" 
-        matInput type="text"></textarea>
+        matInput type="text">
+      </textarea>
     </mat-form-field>
   </form>
-  <app-post *ngFor="let post of posts" [post]="post" [currentUserId]="currentUser.Id" [posts]="posts"></app-post>
+  <app-post *ngFor="let post of posts" 
+    [post]="post" 
+    [currentUserId]="currentUserId" 
+    [currentUserName]="currentUserName"
+    [posts]="posts">
+  </app-post>
 </div>
