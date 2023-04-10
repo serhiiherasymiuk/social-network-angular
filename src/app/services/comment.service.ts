@@ -20,8 +20,8 @@ export class CommentService {
     return this.http.get<IComment>(`${this.api}/${id}`);
   }
 
-  getByPostId(id: number): Observable<IComment> {
-    return this.http.get<IComment>(`${this.api}/getByPostId/${id}`);
+  getByPostId(id: number): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${this.api}/getByPostId/${id}`);
   }
 
   delete(id: number): Observable<any> {

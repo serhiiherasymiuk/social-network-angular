@@ -73,7 +73,7 @@ export class CommentListComponent implements OnInit {
     this.comment.commentLikes = [];
     if (this.comment.content.trim() !== '') {
       this.commentService.create(this.commentForm.value as IComment).subscribe(res => {
-        this.commentService.getAll().subscribe(res => this.post.comments = res)
+        this.commentService.getByPostId(this.post.id).subscribe(res => this.post.comments = res)
       });
       this.comment.content = '';
     }
