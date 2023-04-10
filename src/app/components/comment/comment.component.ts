@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
 import { CommentLikeService } from 'src/app/services/comment-like.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-comment',
@@ -9,12 +10,13 @@ import { CommentService } from 'src/app/services/comment.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit{
-  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService) {}
+  commentOwnerUsername: string;
+  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService, private userService: UserService) {}
   ngOnInit(): void {
     this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);
+    this.userService.getById(this.comment.userId).subscribe(res => this.commentOwnerUsername = res.userName)
   }
   @Input() currentUserId: string = "";
-  @Input() currentUserName: string = "";
   @Input() comments: IComment[] | undefined = [] ;
   @Input() comment: IComment = {
     id: 0,

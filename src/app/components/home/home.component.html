@@ -1,9 +1,9 @@
 <div class="home">
     <div>
-        <app-side-menu></app-side-menu>
+        <app-side-menu [currentUserId]="currentUserId"></app-side-menu>
     </div>
     <div>
-        <app-post-list [currentUserId]="currentUser.id" [currentUserName]="currentUser.userName"></app-post-list>
+        <app-post-list [currentUserId]="currentUser.id"></app-post-list>
     </div>
     <div>
 

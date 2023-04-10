@@ -9,9 +9,8 @@ import { IUser } from 'src/app/interfaces/user';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent{
+export class PostComponent implements OnInit{
   @Input() currentUserId: string = ''
-  @Input() currentUserName: string = ''
   @Input() posts: IPost[] = [];
   @Input() post: IPost = {
     id: 0,
@@ -21,7 +20,11 @@ export class PostComponent{
     comments: [],
     postLikes: [],
   };
-  constructor(private postService: PostService) {}
+  postOwnerUsername: string;
+  constructor(private postService: PostService,private userService: UserService) {}
+  ngOnInit(): void {
+    this.userService.getById(this.post.userId).subscribe(res => this.postOwnerUsername = res.userName)
+  }
   isEditing: boolean = false;
   editedContent: string = "";
   toggleEditing() {

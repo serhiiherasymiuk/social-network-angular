@@ -31,7 +31,6 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentListComponent implements OnInit {
   @Input() currentUserId: string = "";
-  @Input() currentUserName: string = "";
   @Input() post: IPost = {
     id: 0,
     content: "",
@@ -48,7 +47,7 @@ export class CommentListComponent implements OnInit {
     postId: 0,
     commentLikes: [],
   };
-  
+
   constructor(private fb: FormBuilder, private commentService: CommentService) {}
   ngOnInit(): void {
     this.commentForm.get("userId")?.setValue(this.currentUserId);
