@@ -1,7 +1,7 @@
 <div *ngIf="message.SenderId != currentUserId; else currentMessage">
     <div class="container">
         <div class="example-header-image">
-            <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+            <img src={{sender.profilePictureUrl}} alt="">
         </div>
         <div class="message senderMes">
             <span class="senderName">{{message.SenderId}}</span>

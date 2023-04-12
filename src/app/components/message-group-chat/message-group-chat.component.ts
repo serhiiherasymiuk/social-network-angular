@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IGroupChatMessage } from 'src/app/interfaces/groupChatMessage';
 import { IUser } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-message-group-chat',
@@ -17,7 +18,25 @@ export class MessageGroupChatComponent {
     SenderId: '',
     GroupChatId: 0, 
   }
-  
+  constructor(private userService: UserService){}
+  sender:IUser={
+    id: "",
+    userName: "",
+    email: "",
+    profilePictureUrl: "",
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: []
+  };
+  // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
   
   isEditing: boolean = false;
   editedContent: string = "";
