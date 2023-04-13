@@ -1,6 +1,10 @@
-<div *ngFor="let m of Members">
-    <button [routerLink]="['/chat', m?.id]">
-        <img src={{m.profilePictureUrl}} alt={{m.userName}}>
-        <span class="userName">{{m.userName}}</span>
-    </button>
+<div class="container">
+    <div class="wrapper">
+        <button class="card" [routerLink]="['/chat', m?.id]" *ngFor="let m of Members">
+            <img src={{m.profilePictureUrl}} alt={{m.userName}}>
+            <div>
+                <p class="name">{{m.userName}}</p>
+            </div>
+        </button>
+</div>
 </div>
