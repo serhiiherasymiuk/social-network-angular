@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IGroupChat } from 'src/app/interfaces/groupChat';
+import { USERS } from '../chat/user-mock-data';
 
 @Component({
   selector: 'app-group-chat',
@@ -7,8 +8,12 @@ import { IGroupChat } from 'src/app/interfaces/groupChat';
   styleUrls: ['./group-chat.component.scss']
 })
 export class GroupChatComponent {
-  currentUserId: string = 'User1';
-chat : IGroupChat={
+  @Input() currentUserId: string = "User1";
+  
+  constructor() { }
+
+  ngOnInit() {}
+  @Input() chat : IGroupChat={
 
   // Id:0,
   // Name:"",
@@ -17,7 +22,7 @@ chat : IGroupChat={
   
   Id:1,
   Name:"chat",
-  Members:[],
+  Members:USERS,
   Messages:[{
     Id:1,
   Content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -48,10 +53,11 @@ chat : IGroupChat={
   }
 ]
 }
+context:string;
 
 
 
-send() {
-
+send(){
+  this.chat.Messages.push({Id:this.chat.Messages.length,Content:this.context,DateSent:new Date(),SenderId:this.currentUserId,GroupChatId:this.chat.Id});
 }
 }
