@@ -8,7 +8,8 @@ import { IUser } from 'src/app/interfaces/user';
   styleUrls: ['./message-group-chat.component.scss']
 })
 export class MessageGroupChatComponent {
-  @Input() currentUserId: string = "User1";
+  @Input() currentUserId: string = "";
+  @Input() messages: IGroupChatMessage[]=[];
   @Input() message: IGroupChatMessage={
     Id: 0,
     Content: '',
@@ -17,4 +18,24 @@ export class MessageGroupChatComponent {
     GroupChatId: 0, 
   }
   
+  
+  isEditing: boolean = false;
+  editedContent: string = "";
+  toggleEditing() {
+    this.editedContent = this.message.Content;
+    this.isEditing = !this.isEditing;
+  }
+  savePost() {
+    if (this.editedContent.trim() !== '') {
+      this.message.Content = this.editedContent;
+    }
+    this.isEditing = false;
+  }
+  cancelEditing() {
+    this.isEditing = false;
+  }
+  deletePost() {
+    var index = this.messages.indexOf(this.message);
+    this.messages.splice(index, 1);
+  }
 }
