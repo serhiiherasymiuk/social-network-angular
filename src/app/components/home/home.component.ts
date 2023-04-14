@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
   // get from login or registartion
-  currentUserId : string = "8262164a-b47c-4d07-ad7c-0e9a218648e5"
+  currentUserId : string = "3209e5e1-8522-4a4c-83e1-129d63caa50c"
   constructor(private userService: UserService) {}
   ngOnInit(): void {
     this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res);
@@ -17,8 +17,10 @@ export class HomeComponent implements OnInit {
   currentUser: IUser = {
     id: '',
     userName: '',
+    displayUsername: '',
     email: '',
     profilePictureUrl: '',
+    profileBackgroundUrl: '',
     posts: [],
     comments: [],
     postLikes: [],
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
     groupChats: [],
     individualChatMessages: [],
     groupChatMessages: [],
-    notifications: []
+    notifications: [],
+    dateRegistrated: new Date(),
   };
 }

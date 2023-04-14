@@ -1,1 +1,45 @@
-<p>profile works!</p>
+<div class="profile">
+    <div>
+        <app-side-menu [currentUserId]="currentUserId"></app-side-menu>
+    </div>
+    <div>
+        <div class="back">
+            <div class="icon-container" [routerLink]="['/']">
+                <i class="bi bi-arrow-left icon"></i>
+            </div>
+        </div>
+        <div class="profile-background-container">
+            <img src="{{accountOwner.profileBackgroundUrl}}" alt="">
+        </div>
+        <div class="profile-container">
+            <div class="main-info">
+                <div>
+                    <div class="profile-picture-container">
+                        <img *ngIf="accountOwner.profilePictureUrl != null" src="{{accountOwner.profilePictureUrl}}" alt="">
+                        <i *ngIf="accountOwner.profilePictureUrl == null" class="bi bi-person-circle"></i>
+                    </div>
+                    <div class="usernames">
+                        <p class="display-username">{{accountOwner.displayUsername}}</p>
+                        <p>@{{accountOwner.userName}}</p>
+                    </div>
+                </div>
+                <div>
+                    <button *ngIf="isCurrentUserIsOwner" mat-stroked-button color="primary" class="change-button">Change profile</button>
+                </div>
+            </div>
+            <div class="other-info">
+                <p><i class="bi bi-calendar4-week"></i> Registrated: {{accountOwner.dateRegistrated | date}}</p>
+            </div>
+            <div class="buttons-container">
+                <div (click)="showPosts()">Posts</div>
+                <div (click)="showComments()">Comments</div>
+                <div (click)="showLikes()">Likes</div>
+            </div>
+            <div>
+                <app-user-post-list *ngIf="showUserPosts" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-post-list>
+                <app-user-comment-list *ngIf="showUserComments" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-comment-list>
+                <app-user-like-list *ngIf="showUserLikes" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-like-list>
+            </div>
+        </div>
+    </div>
+</div>

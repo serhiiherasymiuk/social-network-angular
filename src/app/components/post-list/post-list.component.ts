@@ -19,7 +19,6 @@ export class PostListComponent implements OnInit {
     comments: [],
   };
   @Input() currentUserId: string = ''
-  @Input() currentUserName: string = ''
   posts: IPost[] = [];
   constructor(private fb: FormBuilder, private postService: PostService) {}
   ngOnInit(): void {

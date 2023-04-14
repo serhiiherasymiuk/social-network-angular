@@ -1,34 +1,41 @@
 <li class="comment">
-    <div class="comment-header">
-        <div>
-            <p>{{ currentUserName }}</p>
-            <p>{{ comment.dateCreated | date }}</p>
+    <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, commentOwner.id]">
+        <img *ngIf="commentOwner.profilePictureUrl != null" src="{{commentOwner.profilePictureUrl}}" alt="">
+        <i *ngIf="commentOwner.profilePictureUrl == null" class="bi bi-person-circle"></i>
+      </div>
+    <div>
+        <div class="comment-header">
+            <div [routerLink]="['/profile', currentUserId, commentOwner.id]">
+                <p>{{commentOwner.displayUsername}}</p>
+                <p class="color-gray">@{{ commentOwner.userName}}</p>
+                <p class="color-gray">{{ comment.dateCreated | date }}</p>
+              </div>
+            <div>
+                <button *ngIf="comment.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+                <button *ngIf="comment.userId === currentUserId && !isEditing" class="delete-button" (click)="deleteComment()"><i class="bi bi-trash3"></i></button>
+                <button class="save-button" *ngIf="isEditing" (click)="saveComment()" mat-stroked-button>Save</button>
+                <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+            </div>
         </div>
-        <div>
-            <button *ngIf="comment.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
-            <button *ngIf="comment.userId === currentUserId && !isEditing" class="delete-button" (click)="deleteComment()"><i class="bi bi-trash3"></i></button>
-            <button class="save-button" *ngIf="isEditing" (click)="saveComment()" mat-stroked-button>Save</button>
-            <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+        <div class="comment-body">
+            <div *ngIf="isEditing">
+                <mat-form-field class="edit-field" appearance="outline">
+                  <mat-label>Edit a comment</mat-label>
+                  <textarea             
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="10" 
+                    matInput [(ngModel)]="editedContent" [value]="comment.content" type="text"></textarea>
+                </mat-form-field>
+            </div>
+            <p *ngIf="!isEditing">{{ comment.content }}</p>
         </div>
-    </div>
-    <div class="comment-body">
-        <div *ngIf="isEditing">
-            <mat-form-field class="edit-field" appearance="outline">
-              <mat-label>Edit a comment</mat-label>
-              <textarea             
-                cdkTextareaAutosize
-                #autosize="cdkTextareaAutosize"
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="10" 
-                matInput [(ngModel)]="editedContent" [value]="comment.content" type="text"></textarea>
-            </mat-form-field>
-        </div>
-        <p *ngIf="!isEditing">{{ comment.content }}</p>
-    </div>
-    <div class="comment-footer">
-        <div>
-            <app-comment-like #commentLikeComponent [comment]="comment" [currentUserId]="currentUserId"></app-comment-like>
-            <p>{{ comment.commentLikes?.length }}</p>
+        <div class="comment-footer">
+            <div>
+                <app-comment-like #commentLikeComponent [comment]="comment" [currentUserId]="currentUserId"></app-comment-like>
+                <p>{{ comment.commentLikes?.length }}</p>
+            </div>
         </div>
     </div>
 </li>
