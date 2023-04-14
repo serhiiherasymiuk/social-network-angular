@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { FollowedComponent } from './components/followed/followed.component';
+import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
 
 
 const routes: Routes = [
@@ -18,8 +20,10 @@ const routes: Routes = [
   { path: 'login', component:  LoginComponent},
   { path: 'register', component:  RegisterComponent},
   { path: 'users', component:  UserListComponent},
-  { path: 'members/:Members', component:  GroupChatMembersComponent},
-  { path: 'followed/:id', component:  FollowedComponent},
+  { path: 'members', component:  GroupChatMembersComponent},
+  { path: 'followed', component:  FollowedComponent},
+  { path: 'groups', component:  GroupChatListComponent},
+  { path: 'group/:groupChatId', component:  GroupChatComponent},
 
 ];
 

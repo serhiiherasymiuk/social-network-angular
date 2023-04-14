@@ -1,30 +1,17 @@
 import { Component, Input } from '@angular/core';
-import { IGroupChat } from 'src/app/interfaces/groupChat';
-import { USERS } from '../chat/user-mock-data';
 import { ActivatedRoute } from '@angular/router';
+import { IGroupChat } from 'src/app/interfaces/groupChat';
+import { UserService } from 'src/app/services/user.service';
+import { USERS } from '../../chat/user-mock-data';
 
 @Component({
-  selector: 'app-group-chat',
-  templateUrl: './group-chat.component.html',
-  styleUrls: ['./group-chat.component.scss']
+  selector: 'app-group-chat-list',
+  templateUrl: './group-chat-list.component.html',
+  styleUrls: ['./group-chat-list.component.scss']
 })
-export class GroupChatComponent {
-  @Input() currentUserId: string = "User1";
-  
-  constructor(private route: ActivatedRoute) {
-    // this.route.params.subscribe(params => {
-    //   let id = params['groupChatId'];
-    //   });
-  }
-  ngOnInit() {}
-  @Input() chat : IGroupChat={
-
-  // Id:0,
-  // Name:"",
-  // Members:[],
-  // Messages:[]
-  
-  Id:1,
+export class GroupChatListComponent {
+  @Input() list:IGroupChat[]=[
+    {Id:1,
   Name:"chat",
   Members:USERS,
   Messages:[{
@@ -55,13 +42,20 @@ export class GroupChatComponent {
   SenderId: "User1",
   GroupChatId: 1
   }
-]
-}
-context:string;
+]},
+  {Id:2,
+    Name:"CHAT",
+    Members:USERS,
+    Messages:[]
+  }];
 
-
-
-send(){
-  this.chat.Messages.push({Id:this.chat.Messages.length,Content:this.context,DateSent:new Date(),SenderId:this.currentUserId,GroupChatId:this.chat.Id});
-}
+  constructor(private route: ActivatedRoute, private userServise: UserService) {
+    // this.route.params.subscribe(params => {
+    //   let id = params['id'];
+    //   this.userServise.getById(id).subscribe(res=>
+    //     this.list=res.groupChats);
+    //   });
+  }
+  
+  
 }

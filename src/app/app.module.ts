@@ -31,6 +31,7 @@ import { MessageComponent } from './components/chat/message/message.component';
 import { MatChip } from '@angular/material/chips';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { FollowedComponent } from './components/followed/followed.component';
+import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { FollowedComponent } from './components/followed/followed.component';
     MessageComponent,
     GroupChatMembersComponent,
     FollowedComponent,
+    GroupChatListComponent,
   ],
   imports: [
     HttpClientModule,
