@@ -24,6 +24,10 @@ export class CommentService {
     return this.http.get<IComment[]>(`${this.api}/getByPostId/${id}`);
   }
 
+  getByUserId(id: string): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${this.api}/getByUserId/${id}`);
+  }
+
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);
   }

@@ -29,6 +29,9 @@ import { UserListComponent } from './components/chat/user-list/user-list.compone
 import { AppRoutingModule } from './app-routing.module';
 import { MessageComponent } from './components/chat/message/message.component';
 import { MatChip } from '@angular/material/chips';
+import { UserPostListComponent } from './components/profile/user-post-list/user-post-list.component';
+import { UserLikeListComponent } from './components/profile/user-like-list/user-like-list.component';
+import { UserCommentListComponent } from './components/profile/user-comment-list/user-comment-list.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { MatChip } from '@angular/material/chips';
     ProfileComponent,
     ChatComponent,
     UserListComponent,
-    MessageComponent
+    MessageComponent,
+    UserPostListComponent,
+    UserCommentListComponent,
+    UserLikeListComponent,
   ],
   imports: [
     HttpClientModule,

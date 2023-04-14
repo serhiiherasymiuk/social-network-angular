@@ -12,8 +12,11 @@ import { IPostLike } from "./postLike";
 export interface IUser{
     id: string;
     userName: string;
+    displayUsername: string;
     email: string;
-    profilePictureUrl: string;
+    profilePictureUrl?: string;
+    profileBackgroundUrl?: string;
+    dateRegistrated: Date;
     posts: IPost[];
     comments: IComment[];
     postLikes: IPostLike[];

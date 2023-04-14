@@ -3,13 +3,16 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  color: #607d8b;
+}
+.comment>div:first-child {
+  width: 55px;
 }
 .comment-header>div {
   height: 20px;
   display: flex;
   flex-direction: row;
   gap: 10px;
+  cursor: pointer;
 }
 .edit-field {
   width: 100%;
@@ -18,14 +21,20 @@
   width: 100%;
 }
 .comment {
+  border-bottom: 2px solid black;
   margin-bottom: 10px;
   font-size: 14px;
-  line-height: 1.4;
-  padding: 10px;
+  padding: 16px;
   padding-bottom: 0;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px #90a4ae;
+  display: flex;
+  flex-direction: row; 
+  gap: 10px;
+}
+.comment>div:last-child {
+  width: 100%;
+}
+.color-gray {
+  color:gray;
 }
 .comment p {
   word-wrap: break-word;
@@ -67,4 +76,21 @@
 }
 .cancel-button, .save-button {
   height: 100%;
+}
+.profile-picture-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  cursor: pointer;
+}
+.profile-picture-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-picture-container i {
+  font-size: 50px;
 }

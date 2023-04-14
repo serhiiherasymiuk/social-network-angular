@@ -20,10 +20,29 @@ export class PostComponent implements OnInit{
     comments: [],
     postLikes: [],
   };
-  postOwnerUsername: string;
+  postOwner: IUser = {
+    id: '',
+    userName: '',
+    displayUsername: '',
+    email: '',
+    profilePictureUrl: '',
+    profileBackgroundUrl: '',
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: [],
+    dateRegistrated: new Date(),
+  };
   constructor(private postService: PostService,private userService: UserService) {}
   ngOnInit(): void {
-    this.userService.getById(this.post.userId).subscribe(res => this.postOwnerUsername = res.userName)
+    this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
   }
   isEditing: boolean = false;
   editedContent: string = "";
