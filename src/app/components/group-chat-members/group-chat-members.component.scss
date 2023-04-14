@@ -1,11 +1,11 @@
 img{
     border-radius: 50%;
-    height: 125px;
-    width: 125px;
+    height: 100px;
+    width: 100px;
 }
 
 .container {
-    background: linear-gradient(to bottom right, #ccffff 0%, #66ccff 100%);  
+    // background: linear-gradient(to bottom right, #ccffff 0%, #66ccff 100%);  
     font-family: Helvetica;
     text-align: center;
     color: white;
@@ -20,7 +20,7 @@ img{
     transition: width 2s, background-color 1s, box-shadow 1s;
     border-radius: 10px;
     color: black;
-    width: 200px;
+    width: 150px;
   }
   
   .card:hover {

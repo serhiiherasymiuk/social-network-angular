@@ -9,12 +9,9 @@ import { USERS } from '../chat/user-mock-data';
   styleUrls: ['./group-chat-members.component.scss']
 })
 export class GroupChatMembersComponent  implements OnInit{
-  @Input() Members: IUser[]=[];
+  @Input() Members: IUser[]=USERS;
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
-      //this.Members = params['Members'];
-    });
+  constructor() {
   }
   ngOnInit(): void {}
 }
