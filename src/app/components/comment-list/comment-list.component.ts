@@ -4,6 +4,8 @@ import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IComment } from '../../interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
+import { IUser } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -30,6 +32,7 @@ import { CommentService } from 'src/app/services/comment.service';
   ]
 })
 export class CommentListComponent implements OnInit {
+  currentUser: IUser;
   @Input() currentUserId: string = "";
   @Input() post: IPost = {
     id: 0,
@@ -48,8 +51,9 @@ export class CommentListComponent implements OnInit {
     commentLikes: [],
   };
 
-  constructor(private fb: FormBuilder, private commentService: CommentService) {}
+  constructor(private fb: FormBuilder, private commentService: CommentService, private userService: UserService) {}
   ngOnInit(): void {
+    this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res)
     this.commentForm.get("userId")?.setValue(this.currentUserId);
     this.commentForm.get("postId")?.setValue(this.post.id);
   }

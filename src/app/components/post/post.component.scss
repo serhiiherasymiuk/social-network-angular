@@ -32,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .post-header p:first-child {
   font-weight: bold;
@@ -45,6 +45,8 @@
 }
 .post-body p {
   margin: 0;
+  word-wrap: break-word;
+  font-size: 14px;
 }
 .post-header h2 {
   margin: 0;
@@ -53,7 +55,7 @@
 }
 .post-header p {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 .post-footer {
   display: flex;
