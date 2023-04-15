@@ -23,6 +23,9 @@ export class UserService {
   getLikedUsersByPostId(id: number): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.api}/getLikedUsersByPostId/${id}`);
   }
+  getLikedUsersByCommentId(id: number): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getLikedUsersByCommentId/${id}`);
+  }
 
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);

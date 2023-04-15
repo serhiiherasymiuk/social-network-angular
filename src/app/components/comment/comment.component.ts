@@ -31,6 +31,7 @@ export class CommentComponent implements OnInit{
     notifications: [],
     dateRegistrated: new Date(),
   };
+  isLikeHovering: boolean = false;
   constructor(private commentService: CommentService, private commentLikeService: CommentLikeService, private userService: UserService) {}
   ngOnInit(): void {
     this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);

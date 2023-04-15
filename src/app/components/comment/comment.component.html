@@ -38,9 +38,10 @@
             <p *ngIf="!isEditing">{{ comment.content }}</p>
         </div>
         <div class="comment-footer">
-            <div>
+            <div (mouseenter)="isLikeHovering = true" (mouseleave)="isLikeHovering = false">
                 <app-comment-like #commentLikeComponent [comment]="comment" [currentUserId]="currentUserId"></app-comment-like>
                 <p>{{ comment.commentLikes?.length }}</p>
+                <app-comment-like-list [commentId]="comment.id" *ngIf="isLikeHovering"></app-comment-like-list>
             </div>
         </div>
     </div>

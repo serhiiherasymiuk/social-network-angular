@@ -35,6 +35,7 @@ import { UserCommentListComponent } from './components/profile/user-comment-list
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { FollowedComponent } from './components/followed/followed.component';
 import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
+import { CommentLikeListComponent } from './components/comment-like-list/comment-like-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { PostLikeListComponent } from './components/post-like-list/post-like-lis
     GroupChatMembersComponent,
     FollowedComponent,
     PostLikeListComponent,
+    CommentLikeListComponent,
   ],
   imports: [
     HttpClientModule,
