@@ -16,7 +16,7 @@
                 <div>
                     <div class="profile-picture-container">
                         <img *ngIf="accountOwner.profilePictureUrl != null" src="{{accountOwner.profilePictureUrl}}" alt="">
-                        <i *ngIf="accountOwner.profilePictureUrl == null" class="bi bi-person-circle"></i>
+                        <i *ngIf="accountOwner.profilePictureUrl == null" class="bi bi-person-fill"></i>
                     </div>
                     <div class="usernames">
                         <p class="display-username">{{accountOwner.displayUsername}}</p>

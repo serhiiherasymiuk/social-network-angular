@@ -1,7 +1,7 @@
 <div class="post-card">
   <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, postOwner.id]">
     <img *ngIf="postOwner.profilePictureUrl != null" src="{{postOwner.profilePictureUrl}}" alt="">
-    <i *ngIf="postOwner.profilePictureUrl == null" class="bi bi-person-circle"></i>
+    <i *ngIf="postOwner.profilePictureUrl == null" class="bi bi-person-fill"></i>
   </div>
   <div>
     <div class="post-header">
