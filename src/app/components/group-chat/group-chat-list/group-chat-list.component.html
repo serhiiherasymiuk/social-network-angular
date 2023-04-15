@@ -1,0 +1,10 @@
+<div class="conatiner">
+    <div class="wrap">
+        <button [routerLink]="['/group', c.Id]" class="box" *ngFor="let c of list">
+            <div class="poster p1">
+                <h4>{{c.Name[0]}}</h4>
+            </div>
+                <h1>{{c.Name}}</h1>
+        </button>
+    </div>
+</div>

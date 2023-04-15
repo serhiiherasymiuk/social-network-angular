@@ -38,8 +38,8 @@ export class MessageGroupChatComponent {
     individualChatMessages: [],
     groupChatMessages: [],
     notifications: []
+    // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
   };
-  // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
   
   isEditing: boolean = false;
   editedContent: string = "";
