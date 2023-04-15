@@ -59,10 +59,15 @@
   display: flex;
   justify-content:baseline;
   align-items: center;
+  gap: 5px;
 }
 .post-footer p {
   margin: 0;
   font-size: 14px;
+}
+.comment-button:hover {
+  background-color: rgb(221, 241, 255);
+  color: rgb(43, 167, 255);
 }
 .comment-button, .edit-button, .delete-button {
   border: none;
@@ -71,8 +76,13 @@
   height: 26px;
   width: 26px;
   border-radius: 50%;
-  margin-right: 10px;
   cursor: pointer;
+}
+.comment-button {
+  transition: all .1s linear;
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
 }
 .comment-button i {
   font-size: 26px;

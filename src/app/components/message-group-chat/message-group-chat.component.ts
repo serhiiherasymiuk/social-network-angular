@@ -24,6 +24,8 @@ export class MessageGroupChatComponent {
     userName: "",
     email: "",
     profilePictureUrl: "",
+    profileBackgroundUrl: "",
+    displayUsername: "",
     posts: [],
     comments: [],
     postLikes: [],
@@ -34,7 +36,8 @@ export class MessageGroupChatComponent {
     groupChats: [],
     individualChatMessages: [],
     groupChatMessages: [],
-    notifications: []
+    notifications: [],
+    dateRegistrated: new Date,
   };
   // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
   
