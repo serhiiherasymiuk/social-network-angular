@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<IUser>(`${this.api}/${id}`);
   }
 
+  getLikedUsersByPostId(id: number): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getLikedUsersByPostId/${id}`);
+  }
+
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);
   }

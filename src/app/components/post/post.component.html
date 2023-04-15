@@ -42,9 +42,10 @@
           <button class="comment-button" (click)="commentsComponent.toggleComments()"><i class="bi bi-chat"></i></button>
           <p>{{post.comments?.length}}</p>
       </div>
-      <div>
+      <div (mouseenter)="isLikeHovering = true" (mouseleave)="isLikeHovering = false">
         <app-post-like #postLikeComponent [post]="post" [currentUserId]="currentUserId"></app-post-like>
         <p>{{post.postLikes?.length}}</p>
+        <app-post-like-list [postId]="post.id" *ngIf="isLikeHovering"></app-post-like-list>
       </div>
     </div>
     <app-comment-list #commentsComponent 

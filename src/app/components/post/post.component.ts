@@ -40,6 +40,7 @@ export class PostComponent implements OnInit{
     notifications: [],
     dateRegistrated: new Date(),
   };
+  isLikeHovering: boolean = false;
   constructor(private postService: PostService,private userService: UserService) {}
   ngOnInit(): void {
     this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
