@@ -13,21 +13,27 @@
       <div>
         <button *ngIf="post.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
         <button *ngIf="post.userId === currentUserId && !isEditing" class="delete-button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
-        <button class="save-button" *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
-        <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
       </div>
     </div>
     <div class="post-body">
       <div *ngIf="isEditing">
-        <mat-form-field class="edit-field" appearance="outline">
-          <mat-label>Edit a post</mat-label>
-          <textarea             
-            cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="10" 
-            matInput [(ngModel)]="editedContent" [value]="post.content" type="text"></textarea>
-        </mat-form-field>
+        <div class="textarea-container"> 
+          <div>
+            <textarea
+              placeholder="Edit a post" class="post-text"     
+              [(ngModel)]="editedContent"
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="1"
+              matInput 
+              [value]="post.content" 
+              type="text">
+          </textarea>
+          </div>
+          <div>
+            <button (click)="savePost()">Save</button>
+            <button (click)="cancelEditing()">Cancel</button>
+          </div>
+      </div>
       </div>
       <p *ngIf="!isEditing">{{ post.content }}</p>
     </div>

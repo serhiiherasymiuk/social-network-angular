@@ -32,7 +32,24 @@ import { UserService } from 'src/app/services/user.service';
   ]
 })
 export class CommentListComponent implements OnInit {
-  currentUser: IUser;
+  currentUser: IUser = {
+    id: '',
+    userName: '',
+    displayUsername: '',
+    email: '',
+    dateRegistrated: new Date,
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: []
+  };
   @Input() currentUserId: string = "";
   @Input() post: IPost = {
     id: 0,
