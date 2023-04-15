@@ -4,15 +4,11 @@
   align-items: center;
   margin-bottom: 16px;
 }
-.comment>div:first-child {
-  width: 55px;
-}
 .comment-header>div {
   height: 20px;
   display: flex;
   flex-direction: row;
   gap: 10px;
-  cursor: pointer;
 }
 .edit-field {
   width: 100%;
@@ -22,15 +18,19 @@
 }
 .comment {
   margin-bottom: 10px;
-  font-size: 14px;
-  padding: 16px;
   padding-bottom: 0;
   display: flex;
   flex-direction: row; 
   gap: 10px;
 }
+.comment-header p {
+  font-size: 16px;
+}
+.comment-body p {
+  font-size: 14px;
+}
 .comment>div:last-child {
-  width: 100%;
+  width: 90%;
 }
 .color-gray {
   color:gray;
@@ -73,16 +73,12 @@
 .edit-button i, .delete-button i {
   font-size: 20px;
 }
-.cancel-button, .save-button {
-  height: 100%;
-}
 .profile-picture-container {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
   background-color: white;
-  border: 4px solid white;
   cursor: pointer;
 }
 .profile-picture-container img {
@@ -96,4 +92,77 @@
 }
 .username {
   font-weight: bold;
+  cursor: pointer;
+}
+.username:hover {
+  text-decoration: underline;
+}
+.comment-list form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 16px;
+  padding-left: 0;
+  >div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  div:first-child {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 15px;
+    button {
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 50px;
+      padding: 5px 25px; 
+      background-color: white;    
+      transition: all .1s linear;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: whitesmoke;
+    }
+  }
+}
+.profile-picture-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  cursor: pointer;
+}
+.profile-picture-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-picture-container i {
+  font-size: 50px;
+}
+.comment-text {
+  min-width: 100%;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.comment-text:focus {
+  outline: none;
 }

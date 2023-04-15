@@ -5,29 +5,35 @@
       </div>
     <div>
         <div class="comment-header">
-            <div [routerLink]="['/profile', currentUserId, commentOwner.id]">
-                <p class="username">{{commentOwner.displayUsername}}</p>
+            <div>
+                <p class="username" [routerLink]="['/profile', currentUserId, commentOwner.id]">{{commentOwner.displayUsername}}</p>
                 <p class="color-gray">@{{ commentOwner.userName}}</p>
                 <p class="color-gray">{{ comment.dateCreated | date }}</p>
               </div>
             <div>
                 <button *ngIf="comment.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
                 <button *ngIf="comment.userId === currentUserId && !isEditing" class="delete-button" (click)="deleteComment()"><i class="bi bi-trash3"></i></button>
-                <button class="save-button" *ngIf="isEditing" (click)="saveComment()" mat-stroked-button>Save</button>
-                <button class="cancel-button" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
             </div>
         </div>
         <div class="comment-body">
             <div *ngIf="isEditing">
-                <mat-form-field class="edit-field" appearance="outline">
-                  <mat-label>Edit a comment</mat-label>
-                  <textarea             
-                    cdkTextareaAutosize
-                    #autosize="cdkTextareaAutosize"
-                    cdkAutosizeMinRows="1"
-                    cdkAutosizeMaxRows="10" 
-                    matInput [(ngModel)]="editedContent" [value]="comment.content" type="text"></textarea>
-                </mat-form-field>
+                  <div class="textarea-container"> 
+                    <div>
+                      <textarea
+                        placeholder="Edit a comment" class="comment-text"     
+                        [(ngModel)]="editedContent"
+                        cdkTextareaAutosize
+                        cdkAutosizeMinRows="1"
+                        matInput 
+                        [value]="comment.content" 
+                        type="text">
+                    </textarea>
+                    </div>
+                    <div>
+                      <button (click)="saveComment()">Save</button>
+                      <button (click)="cancelEditing()">Cancel</button>
+                    </div>
+                </div>
             </div>
             <p *ngIf="!isEditing">{{ comment.content }}</p>
         </div>
