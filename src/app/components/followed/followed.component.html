@@ -1,0 +1,14 @@
+
+<div class="container">
+    <div class="wrapper">
+
+        <button class="card" [routerLink]="['/chat', f?.id]" *ngFor="let f of Followed">
+            
+           
+                <img src={{f.profilePictureUrl}} alt={{f.userName}}>
+            <div>
+                <p class="name">{{f.userName}}</p>
+            </div>
+        </button>
+</div>
+</div>

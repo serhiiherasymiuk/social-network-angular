@@ -1,7 +1,7 @@
 <div *ngIf="message.SenderId != currentUserId; else currentMessage">
     <div class="container">
         <div class="example-header-image">
-            <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+            <img src={{sender.profilePictureUrl}} alt="">
         </div>
         <div class="message senderMes">
             <span class="senderName">{{message.SenderId}}</span>
@@ -13,12 +13,25 @@
     </div>
 </div>
 <ng-template #currentMessage>
-    <!-- <div class="container"> -->
-        <div class="contSen">
-            <div class="message currentMes">
-                    <div class="mesContent">{{message.Content}}</div> 
-                    <span class="date">{{message.DateSent | date:"medium"}}</span>
+    <div class="contSen">
+        <div class="message currentMes">
+            <div>
+                <button *ngIf="!isEditing" class="button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+                <button *ngIf="!isEditing" class="button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
+                <button class="button1" *ngIf="isEditing" (click)="savePost()" mat-stroked-button>Save</button>
+                <button class="button1" *ngIf="isEditing" (click)="cancelEditing()" mat-stroked-button>Cancel</button>
+            </div>
+            <div>
+                <div *ngIf="isEditing" class="mesContent">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Edit a message</mat-label>
+                        <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10" cdkAutosizeMaxRows="30" 
+                        matInput [(ngModel)]="editedContent" [value]="message.Content" type="text"></textarea>
+                    </mat-form-field>
                 </div>
+                <div *ngIf="!isEditing" class="mesContent">{{message.Content}}</div> 
+                <span class="date">{{message.DateSent | date:"medium"}}</span>
+            </div>
         </div>
-    <!-- </div> -->
+      </div>
 </ng-template>

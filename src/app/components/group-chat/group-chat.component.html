@@ -1,1 +1,21 @@
-<div class="chat"><app-message-group-chat *ngFor="let message of chat.Messages" [message]="message"></app-message-group-chat></div>
+
+  <mat-toolbar>
+    <span [routerLink]="['/members', 'chat.Members']">{{chat.Name}}</span>
+  </mat-toolbar>
+  
+
+<div class="chat">
+   <div class="messages">
+        <app-message-group-chat *ngFor="let message of chat.Messages" [message]="message" [currentUserId]="currentUserId"></app-message-group-chat>
+   </div>
+    
+</div>
+<form class="flex" (ngSubmit)="send()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="context" type="text"></textarea>
+    </mat-form-field>
+    <button mat-icon-button type="submit">
+        <img src="https://cdn-icons-png.flaticon.com/512/6492/6492707.png" alt="">
+      </button>
+    </form>

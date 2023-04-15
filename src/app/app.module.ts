@@ -32,7 +32,8 @@ import { MatChip } from '@angular/material/chips';
 import { UserPostListComponent } from './components/profile/user-post-list/user-post-list.component';
 import { UserLikeListComponent } from './components/profile/user-like-list/user-like-list.component';
 import { UserCommentListComponent } from './components/profile/user-comment-list/user-comment-list.component';
-
+import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
+import { FollowedComponent } from './components/followed/followed.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,8 @@ import { UserCommentListComponent } from './components/profile/user-comment-list
     UserPostListComponent,
     UserCommentListComponent,
     UserLikeListComponent,
+    GroupChatMembersComponent,
+    FollowedComponent,
   ],
   imports: [
     HttpClientModule,

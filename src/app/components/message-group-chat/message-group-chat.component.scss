@@ -19,18 +19,29 @@
 }
 .contSen{
     text-align: right;
-    
     margin: 20px;
 }
 .currentMes{
     display: inline-block;
     text-align-last: end;
     background-color: #66ccff;
-     text-align: start;
+     
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .senderName{
     font-weight: bold;
     margin: 0 10px;
+}
+.button{
+    background-color: #66ccff;
+    margin: 0 2px;
+    border: none;
+}
+.button1{
+    margin: 2px;
 }
 
 .date{
@@ -46,5 +57,10 @@
 
 .mesContent{
     margin: 5px 0;
+    text-align: left;
+   white-space: pre-wrap;
 }
-
+.edit-field{
+    width: 100%;
+    //max-width: 400px;
+}
