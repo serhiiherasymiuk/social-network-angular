@@ -24,7 +24,9 @@
                     </div>
                 </div>
                 <div>
-                    <button *ngIf="isCurrentUserIsOwner" mat-stroked-button color="primary" class="change-button">Change profile</button>
+                    <button *ngIf="isCurrentUserIsOwner" class="change-button">Change profile</button>
+                    <button *ngIf="!isCurrentUserIsOwner && !isFollowed" class="follow-button" (click)="toggleFollow()">Follow</button>
+                    <button *ngIf="isFollowed" class="unfollow-button" (click)="toggleFollow()">Unfollow</button>
                 </div>
             </div>
             <div class="other-info">

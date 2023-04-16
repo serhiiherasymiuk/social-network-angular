@@ -24,7 +24,7 @@ export class FollowedComponent implements OnInit {
       });
 
     for (let i = 0; i < followed.length; i++) {
-      this.userServise.getById(followed[i].FollowedUserId).subscribe(res=>{
+      this.userServise.getById(followed[i].followedUserId).subscribe(res=>{
         this.Followed.push(res);
       });
     }

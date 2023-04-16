@@ -36,6 +36,7 @@ import { GroupChatMembersComponent } from './components/group-chat-members/group
 import { FollowedComponent } from './components/followed/followed.component';
 import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
 import { CommentLikeListComponent } from './components/comment-like-list/comment-like-list.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { CommentLikeListComponent } from './components/comment-like-list/comment
     FollowedComponent,
     PostLikeListComponent,
     CommentLikeListComponent,
+    EditProfileComponent,
   ],
   imports: [
     HttpClientModule,

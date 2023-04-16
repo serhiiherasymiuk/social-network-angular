@@ -12,7 +12,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { FollowedComponent } from './components/followed/followed.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'profile/:currentUserId/:accountOwnerId', component: ProfileComponent },
@@ -22,7 +21,6 @@ const routes: Routes = [
   { path: 'users', component:  UserListComponent},
   { path: 'members/:Members', component:  GroupChatMembersComponent},
   { path: 'followed/:id', component:  FollowedComponent},
-
 ];
 
 @NgModule({

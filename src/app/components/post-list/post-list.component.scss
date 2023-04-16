@@ -57,6 +57,12 @@ p, h1 {
     font-weight: bold;
     padding: 5px;
   }
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  opacity: .9;
+  border-bottom: 2px solid black;
 }
 
 .profile-picture-container {

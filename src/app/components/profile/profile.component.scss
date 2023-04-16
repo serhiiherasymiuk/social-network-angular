@@ -14,6 +14,12 @@
 .back {
     padding: 10px;
     display: flex;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    opacity: .9;
+    border-bottom: 2px solid black;
 }
 .icon {
     font-size: 30px;
@@ -35,20 +41,43 @@ p {
     height: 300px;
     object-fit: cover;
 }
-.change-button {
-    margin-top: 20px;
-    width: 150px;
+.change-button, .follow-button, .unfollow-button {
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 5px 25px; 
+    background-color: white;    
+    transition: all .1s linear;
+    cursor: pointer;
+    position: relative;
+    bottom: 35px;
+}
+.change-button:hover {
+    background-color: whitesmoke;
+}
+.follow-button, .unfollow-button {
+    bottom: 15px;
+}
+.follow-button:hover {
+    border: 2px solid rgb(43, 167, 255);
+    color: rgb(43, 167, 255);
+    background-color: rgb(221, 241, 255);
+}
+.unfollow-button:hover {
+    border: 2px solid rgb(220,23,114);
+    color: rgb(220,23,114);
+    background-color: rgb(255, 240, 240);
 }
 .profile-container {
     position: relative;
-    top: -100px;
+    top: -85px;
+    margin-bottom: -85px;
 }
 .usernames {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     margin-top: auto;
-    padding-top: 20px;
     padding-left: 30px;
 }
 .main-info {
