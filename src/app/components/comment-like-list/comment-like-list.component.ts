@@ -26,4 +26,5 @@ export class CommentLikeListComponent {
   }
   likedUsers: IUser[]
   @Input() commentId: number;
+  @Input() currentUserId: string;
 }

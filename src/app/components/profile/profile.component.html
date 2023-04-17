@@ -4,7 +4,7 @@
     </div>
     <div>
         <div class="back">
-            <div class="icon-container" [routerLink]="['/']">
+            <div class="icon-container" (click)="goBack()">
                 <i class="bi bi-arrow-left icon"></i>
             </div>
         </div>
@@ -25,12 +25,16 @@
                 </div>
                 <div>
                     <button *ngIf="isCurrentUserIsOwner" class="change-button">Change profile</button>
-                    <button *ngIf="!isCurrentUserIsOwner && !isFollowed" class="follow-button" (click)="toggleFollow()">Follow</button>
-                    <button *ngIf="isFollowed" class="unfollow-button" (click)="toggleFollow()">Unfollow</button>
+                    <button [class.bottom]="accountOwner.profilePictureUrl == null" *ngIf="!isCurrentUserIsOwner && !isFollowed" class="follow-button" (click)="toggleFollow()">Follow</button>
+                    <button [class.bottom]="accountOwner.profilePictureUrl == null" *ngIf="isFollowed" class="unfollow-button" (click)="toggleFollow()">Unfollow</button>
                 </div>
             </div>
             <div class="other-info">
                 <p><i class="bi bi-calendar4-week"></i> Registrated: {{accountOwner.dateRegistrated | date}}</p>
+                <div>
+                    <p [routerLink]="['/profile', currentUserId, accountOwnerId, 'followers']">{{followers.length}} Followers</p>
+                    <p [routerLink]="['/profile', currentUserId, accountOwnerId, 'following']">{{following.length}} Following</p>
+                </div>
             </div>
             <div class="buttons-container">
                 <div (click)="showPosts()">Posts</div>

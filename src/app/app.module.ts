@@ -33,10 +33,12 @@ import { UserPostListComponent } from './components/profile/user-post-list/user-
 import { UserLikeListComponent } from './components/profile/user-like-list/user-like-list.component';
 import { UserCommentListComponent } from './components/profile/user-comment-list/user-comment-list.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
-import { FollowedComponent } from './components/followed/followed.component';
 import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
 import { CommentLikeListComponent } from './components/comment-like-list/comment-like-list.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { FollowingComponent } from './components/following/following.component';
+import { FollowersComponent } from './components/followers/followers.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,10 +62,11 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     UserCommentListComponent,
     UserLikeListComponent,
     GroupChatMembersComponent,
-    FollowedComponent,
     PostLikeListComponent,
     CommentLikeListComponent,
     EditProfileComponent,
+    FollowingComponent,
+    FollowersComponent,
   ],
   imports: [
     HttpClientModule,
@@ -71,12 +74,9 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-
     AppRoutingModule,
-
     ReactiveFormsModule,
     MatChipsModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

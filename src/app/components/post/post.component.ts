@@ -3,6 +3,7 @@ import { IPost } from '../../interfaces/post';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/interfaces/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -41,7 +42,7 @@ export class PostComponent implements OnInit{
     dateRegistrated: new Date(),
   };
   isLikeHovering: boolean = false;
-  constructor(private postService: PostService,private userService: UserService) {}
+  constructor(private postService: PostService, private userService: UserService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
   }

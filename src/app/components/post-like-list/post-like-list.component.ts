@@ -26,4 +26,5 @@ export class PostLikeListComponent implements OnInit {
   }
   likedUsers: IUser[]
   @Input() postId: number;
+  @Input() currentUserId: string;
 }

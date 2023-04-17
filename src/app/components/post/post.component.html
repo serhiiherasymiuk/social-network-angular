@@ -45,7 +45,7 @@
       <div (mouseenter)="isLikeHovering = true" (mouseleave)="isLikeHovering = false">
         <app-post-like #postLikeComponent [post]="post" [currentUserId]="currentUserId"></app-post-like>
         <p>{{post.postLikes?.length}}</p>
-        <app-post-like-list [postId]="post.id" *ngIf="isLikeHovering"></app-post-like-list>
+        <app-post-like-list [postId]="post.id" [currentUserId]="currentUserId" *ngIf="isLikeHovering"></app-post-like-list>
       </div>
     </div>
     <app-comment-list #commentsComponent 

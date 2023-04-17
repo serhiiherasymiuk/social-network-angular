@@ -1,0 +1,41 @@
+<div class="follow">
+    <div>
+        <app-side-menu [currentUserId]="currentUserId"></app-side-menu>
+    </div>
+    <div>
+        <div class="upper-menu">
+            <div class="back">
+                <div class="icon-container" [routerLink]="['/profile', currentUserId, accountOwnerId]">
+                    <i class="bi bi-arrow-left icon"></i>
+                </div>
+            </div>
+            <div class="buttons-container">
+                <div [routerLink]="['/profile', currentUserId, accountOwnerId, 'followers']">Followers
+                    <div></div>
+                </div>
+                <div [routerLink]="['/profile', currentUserId, accountOwnerId, 'following']">Following</div>
+            </div>
+        </div>
+        <div class="followers-list">
+            <div *ngFor="let follower of followers" class="follower">
+                <div>   
+                    <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, follower.id]">
+                        <img *ngIf="follower.profilePictureUrl != null" src="{{follower.profilePictureUrl}}" alt="">
+                        <i *ngIf="follower.profilePictureUrl == null" class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="names">
+                        <p>{{follower.displayUsername}}</p>
+                        <p>@{{follower.userName}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!isCurrentUser(follower.id)">
+                    <button *ngIf="!isFollow(follower.id)" class="follow-button" (click)="toggleFollow(follower.id)">Follow</button>
+                    <button *ngIf="isFollow(follower.id)" class="unfollow-button" (click)="toggleFollow(follower.id)">Unfollow</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>

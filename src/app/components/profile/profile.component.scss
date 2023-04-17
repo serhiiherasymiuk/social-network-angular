@@ -31,14 +31,17 @@
     transition: all .1s linear;
 }
 .icon-container:hover {
-    background-color:whitesmoke;
+    background-color:#e5e5e5;
 }
 p {
     margin: 0;
 }
+.profile-background-container {
+    height: 300px;
+}
 .profile-background-container img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
 }
 .change-button, .follow-button, .unfollow-button {
@@ -47,15 +50,16 @@ p {
     border-radius: 50px;
     padding: 5px 25px; 
     background-color: white;    
-    transition: all .1s linear;
+    transition: color .1s linear;
+    transition: background-color .1s linear;
     cursor: pointer;
     position: relative;
     bottom: 35px;
 }
 .change-button:hover {
-    background-color: whitesmoke;
+    background-color: #e5e5e5;
 }
-.follow-button, .unfollow-button {
+.bottom {
     bottom: 15px;
 }
 .follow-button:hover {
@@ -74,11 +78,13 @@ p {
     margin-bottom: -85px;
 }
 .usernames {
+    font-size: 16px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
     margin-top: auto;
     padding-left: 30px;
+    padding-bottom: 10px;
 }
 .main-info {
     display: flex;
@@ -87,8 +93,20 @@ p {
     padding: 0 20px;
 }
 .other-info {
+    font-size: 16px;
     padding: 0 20px;
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    >div {
+        display: flex;
+        gap: 20px;
+        p:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
 }
 .main-info>div {
     display: flex;
@@ -107,8 +125,8 @@ p {
     border: 4px solid white;
 }
 .profile-picture-container img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -125,7 +143,7 @@ p {
     text-align: center;
 }    
 .buttons-container>div:hover {
-    background-color: whitesmoke;
+    background-color: #e5e5e5;
 }
 .buttons-container div {
     cursor: pointer;

@@ -20,9 +20,18 @@ export class UserService {
     return this.http.get<IUser>(`${this.api}/${id}`);
   }
 
+  GetFollowersByUserId(id: string): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getFollowersByUserId/${id}`);
+  }
+
+  GetFollowingByUserId(id: string): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/GetFollowingByUserId/${id}`);
+  }
+
   getLikedUsersByPostId(id: number): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.api}/getLikedUsersByPostId/${id}`);
   }
+
   getLikedUsersByCommentId(id: number): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.api}/getLikedUsersByCommentId/${id}`);
   }
