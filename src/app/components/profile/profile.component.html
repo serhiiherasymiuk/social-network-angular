@@ -1,6 +1,6 @@
 <div class="profile">
     <div>
-        <app-side-menu [currentUserId]="currentUserId"></app-side-menu>
+        <app-side-menu></app-side-menu>
     </div>
     <div>
         <div class="back">
@@ -32,8 +32,8 @@
             <div class="other-info">
                 <p><i class="bi bi-calendar4-week"></i> Registrated: {{accountOwner.dateRegistrated | date}}</p>
                 <div>
-                    <p [routerLink]="['/profile', currentUserId, accountOwnerId, 'followers']">{{followers.length}} Followers</p>
-                    <p [routerLink]="['/profile', currentUserId, accountOwnerId, 'following']">{{following.length}} Following</p>
+                    <p [routerLink]="['followers']">{{followers.length}} Followers</p>
+                    <p [routerLink]="['following']">{{following.length}} Following</p>
                 </div>
             </div>
             <div class="buttons-container">

@@ -4,7 +4,7 @@
   </div>
   <form [formGroup]="postForm" (ngSubmit)="addPost()">
     <div>
-      <div class="profile-picture-container" [routerLink]="['/profile', currentUser.id, currentUser.id]">
+      <div class="profile-picture-container" [routerLink]="['/profile', currentUser.userName]">
         <img *ngIf="currentUser.profilePictureUrl != null" src="{{currentUser.profilePictureUrl}}" alt="">
         <i *ngIf="currentUser.profilePictureUrl == null" class="bi bi-person-fill"></i>
       </div>    

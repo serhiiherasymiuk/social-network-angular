@@ -42,22 +42,24 @@ export class ProfileComponent {
   constructor(private location: Location, private route: ActivatedRoute, private userService: UserService, private followService: FollowService) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.currentUserId = params['currentUserId'];
-      this.accountOwnerId = params['accountOwnerId'];
+      this.userService.getByUserName(params['userName']).subscribe(res => {
+        this.accountOwnerId = res.id
+        this.currentUserId = this.userService.getCurrentUserId()
+        if (this.currentUserId == this.accountOwnerId)
+          this.isCurrentUserIsOwner = true;
+        this.userService.getById(this.accountOwnerId).subscribe(res => this.accountOwner = res)
+        this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { 
+          this.followers = res;
+          if (!this.isCurrentUserIsOwner) {
+            this.isFollowed = this.followers.some(followers => followers.followerId == this.currentUserId);
+          }
+        })
+        this.followService.getByFollowerId(this.accountOwnerId).subscribe(res => this.following = res )
+      })
     });
-    if (this.currentUserId == this.accountOwnerId)
-      this.isCurrentUserIsOwner = true;
-    this.userService.getById(this.accountOwnerId).subscribe(res => this.accountOwner = res)
-    this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { 
-      this.followers = res;
-      if (!this.isCurrentUserIsOwner) {
-        this.isFollowed = this.followers.some(followers => followers.followerId == this.currentUserId);
-      }
-    })
-    this.followService.getByFollowerId(this.accountOwnerId).subscribe(res => this.following = res )
   }
-  goBack(): void {
-    this.location.back();
+  goBack() {
+    this.location.back()
   }
   toggleFollow(): void {
     if (this.isFollowed) {

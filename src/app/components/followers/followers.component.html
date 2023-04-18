@@ -1,30 +1,30 @@
 <div class="follow">
     <div>
-        <app-side-menu [currentUserId]="currentUserId"></app-side-menu>
+        <app-side-menu></app-side-menu>
     </div>
     <div>
         <div class="upper-menu">
             <div class="back">
-                <div class="icon-container" [routerLink]="['/profile', currentUserId, accountOwnerId]">
+                <div class="icon-container" [routerLink]="['/profile', accountOwnerUserName]">
                     <i class="bi bi-arrow-left icon"></i>
                 </div>
             </div>
             <div class="buttons-container">
-                <div [routerLink]="['/profile', currentUserId, accountOwnerId, 'followers']">Followers
+                <div [routerLink]="['/profile', accountOwnerUserName, 'followers']">Followers
                     <div></div>
                 </div>
-                <div [routerLink]="['/profile', currentUserId, accountOwnerId, 'following']">Following</div>
+                <div [routerLink]="['/profile', accountOwnerUserName, 'following']">Following</div>
             </div>
         </div>
         <div class="followers-list">
             <div *ngFor="let follower of followers" class="follower">
                 <div>   
-                    <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, follower.id]">
+                    <div class="profile-picture-container" [routerLink]="['/profile', follower.userName]">
                         <img *ngIf="follower.profilePictureUrl != null" src="{{follower.profilePictureUrl}}" alt="">
                         <i *ngIf="follower.profilePictureUrl == null" class="bi bi-person-fill"></i>
                     </div>
                     <div class="names">
-                        <p [routerLink]="['/profile', currentUserId, follower.id]">{{follower.displayUsername}}</p>
+                        <p [routerLink]="['/profile', follower.userName]">{{follower.displayUsername}}</p>
                         <p>@{{follower.userName}}</p>
                     </div>
                 </div>

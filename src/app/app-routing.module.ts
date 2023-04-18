@@ -13,14 +13,14 @@ import { FollowersComponent } from './components/followers/followers.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'profile/:currentUserId/:accountOwnerId', component: ProfileComponent },
+  { path: 'profile/:userName', component: ProfileComponent },
   { path: 'chat/:id', component:  ChatComponent},
   { path: 'login', component:  LoginComponent},
   { path: 'register', component:  RegisterComponent},
   { path: 'users', component:  UserListComponent},
   { path: 'members/:Members', component:  GroupChatMembersComponent},
-  { path: 'profile/:currentUserId/:accountOwnerId/following', component:  FollowingComponent},
-  { path: 'profile/:currentUserId/:accountOwnerId/followers', component:  FollowersComponent},
+  { path: 'profile/:userName/following', component:  FollowingComponent},
+  { path: 'profile/:userName/followers', component:  FollowersComponent},
 ];
 
 @NgModule({

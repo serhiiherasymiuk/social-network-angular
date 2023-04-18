@@ -1,12 +1,12 @@
 <li class="comment">
-    <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, commentOwner.id]">
+    <div class="profile-picture-container" [routerLink]="['/profile', commentOwner.userName]">
         <img *ngIf="commentOwner.profilePictureUrl != null" src="{{commentOwner.profilePictureUrl}}" alt="">
         <i *ngIf="commentOwner.profilePictureUrl == null" class="bi bi-person-fill"></i>
       </div>
     <div>
         <div class="comment-header">
             <div>
-                <p class="username" [routerLink]="['/profile', currentUserId, commentOwner.id]">{{commentOwner.displayUsername}}</p>
+                <p class="username" [routerLink]="['/profile', commentOwner.userName]">{{commentOwner.displayUsername}}</p>
                 <p class="color-gray">@{{ commentOwner.userName}}</p>
                 <p class="color-gray">{{ comment.dateCreated | date }}</p>
               </div>

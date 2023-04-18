@@ -13,19 +13,23 @@ import { UserService } from 'src/app/services/user.service';
 export class FollowingComponent implements OnInit {
   currentUserId: string;
   accountOwnerId: string;
+  accountOwnerUserName: string;
   isCurrentUserIsOwner: boolean = false;
   following: IUser[] = []
   currentUserfollowing: IFollow[] = []
   constructor(private route: ActivatedRoute, private userService: UserService, private followService: FollowService) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.currentUserId = params['currentUserId'];
-      this.accountOwnerId = params['accountOwnerId'];
+      this.accountOwnerUserName = params['userName']
+      this.userService.getByUserName(params['userName']).subscribe(res => {
+        this.accountOwnerId = res.id
+        this.currentUserId = this.userService.getCurrentUserId()
+        if (this.currentUserId == this.accountOwnerId)
+          this.isCurrentUserIsOwner = true
+        this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
+        this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
+      })
     });
-    if (this.currentUserId == this.accountOwnerId)
-      this.isCurrentUserIsOwner = true
-    this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
-    this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
   }
   isFollow(userId: string): boolean {
     return this.currentUserfollowing.some(follow => follow.followedUserId == userId);
@@ -35,7 +39,7 @@ export class FollowingComponent implements OnInit {
   }
   toggleFollow(userId: string): void {
     if (this.isFollow(userId)) {
-      const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId);
+      const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId && follow.followedUserId == userId);
       if (follow) {
         this.followService.delete(follow.id).subscribe(res => {
           this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)

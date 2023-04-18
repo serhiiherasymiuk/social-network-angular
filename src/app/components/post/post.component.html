@@ -1,12 +1,12 @@
 <div class="post-card">
-  <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, postOwner.id]">
+  <div class="profile-picture-container" [routerLink]="['/profile', postOwner.userName]">
     <img *ngIf="postOwner.profilePictureUrl != null" src="{{postOwner.profilePictureUrl}}" alt="">
     <i *ngIf="postOwner.profilePictureUrl == null" class="bi bi-person-fill"></i>
   </div>
   <div>
     <div class="post-header">
       <div>
-        <p class="username" [routerLink]="['/profile', currentUserId, postOwner.id]">{{postOwner.displayUsername}}</p>
+        <p class="username" [routerLink]="['/profile', postOwner.userName]">{{postOwner.displayUsername}}</p>
         <p class="color-gray">@{{ postOwner.userName}}</p>
         <p class="color-gray">{{ post.dateCreated | date }}</p>
       </div>

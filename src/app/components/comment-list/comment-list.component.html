@@ -2,7 +2,7 @@
   <div>
     <form [formGroup]="commentForm" (ngSubmit)="addComment()">
       <div>
-        <div class="profile-picture-container" [routerLink]="['/profile', currentUserId, currentUserId]">
+        <div class="profile-picture-container" [routerLink]="['/profile', currentUser.userName]">
           <img *ngIf="currentUser.profilePictureUrl != null" src="{{currentUser.profilePictureUrl}}" alt="">
           <i *ngIf="currentUser.profilePictureUrl == null" class="bi bi-person-fill"></i>
         </div>    
