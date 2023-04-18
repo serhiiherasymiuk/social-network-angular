@@ -5,6 +5,7 @@ import { IUser } from 'src/app/interfaces/user';
 import { FollowService } from 'src/app/services/follow.service';
 import { UserService } from 'src/app/services/user.service';
 import { Location } from '@angular/common';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-profile',
@@ -39,7 +40,7 @@ export class ProfileComponent {
   isFollowed: boolean = false;
   followers: IFollow[] = [];
   following: IFollow[] = [];
-  constructor(private location: Location, private route: ActivatedRoute, private userService: UserService, private followService: FollowService) { }
+  constructor(private navigation: NavigationService, private route: ActivatedRoute, private userService: UserService, private followService: FollowService) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userService.getByUserName(params['userName']).subscribe(res => {
@@ -59,7 +60,7 @@ export class ProfileComponent {
     });
   }
   goBack() {
-    this.location.back()
+    this.navigation.back()
   }
   toggleFollow(): void {
     if (this.isFollowed) {

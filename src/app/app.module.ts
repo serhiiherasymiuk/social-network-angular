@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,6 +38,8 @@ import { CommentLikeListComponent } from './components/comment-like-list/comment
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowersComponent } from './components/followers/followers.component';
+import { BackButtonDirective } from './directives/back-button.directive';
+import { NavigationService } from './services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import { FollowersComponent } from './components/followers/followers.component';
     EditProfileComponent,
     FollowingComponent,
     FollowersComponent,
+    BackButtonDirective,
   ],
   imports: [
     HttpClientModule,
