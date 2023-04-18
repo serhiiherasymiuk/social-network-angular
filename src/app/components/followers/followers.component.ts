@@ -24,7 +24,7 @@ export class FollowersComponent {
     });
     if (this.currentUserId == this.accountOwnerId)
       this.isCurrentUserIsOwner = true
-    this.userService.GetFollowersByUserId(this.accountOwnerId).subscribe(res => this.followers = res)
+    this.userService.getFollowersByUserId(this.accountOwnerId).subscribe(res => this.followers = res)
     this.followService.getByFollowerId(this.currentUserId).subscribe(res => {
       this.currentUserfollowing = res
     })
@@ -40,7 +40,7 @@ export class FollowersComponent {
       const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId);
       if (follow) {
         this.followService.delete(follow.id).subscribe(res => {
-          this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.currentUserfollowing = res })
+          this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
         });
       }
     }
@@ -51,10 +51,7 @@ export class FollowersComponent {
         followedUserId: userId,
       };
       this.followService.create(newFollow).subscribe(res => {
-        this.userService.GetFollowersByUserId(this.accountOwnerId).subscribe(res => this.followers = res)
-        this.followService.getByFollowerId(this.currentUserId).subscribe(res => {
-          this.currentUserfollowing = res
-        })
+        this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
       });
     }
   }

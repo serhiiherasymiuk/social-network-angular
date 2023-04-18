@@ -20,11 +20,11 @@ export class UserService {
     return this.http.get<IUser>(`${this.api}/${id}`);
   }
 
-  GetFollowersByUserId(id: string): Observable<IUser[]> {
+  getFollowersByUserId(id: string): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.api}/getFollowersByUserId/${id}`);
   }
 
-  GetFollowingByUserId(id: string): Observable<IUser[]> {
+  getFollowingByUserId(id: string): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.api}/GetFollowingByUserId/${id}`);
   }
 

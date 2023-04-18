@@ -79,6 +79,7 @@
     border-radius: 50%;
     object-fit: cover;
     background-color: white;
+    cursor: pointer;
 }
 .profile-picture-container img {
     max-width: 100%;
@@ -115,6 +116,7 @@ p {
     font-size: 16px;
     >p:first-child {
         font-weight: bold;
+        cursor: pointer;
     }
     >p:first-child:hover {
         text-decoration: underline;
@@ -123,8 +125,6 @@ p {
         color: #434c5e;
     }
 }
-
-
 .follow-button, .unfollow-button {
     font-size: 20px;
     font-weight: bold;

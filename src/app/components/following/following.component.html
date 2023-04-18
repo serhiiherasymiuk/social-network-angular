@@ -23,7 +23,7 @@
                             <i *ngIf="follower.profilePictureUrl == null" class="bi bi-person-fill"></i>
                         </div>
                         <div class="names">
-                            <p>{{follower.displayUsername}}</p>
+                            <p [routerLink]="['/profile', currentUserId, follower.id]">{{follower.displayUsername}}</p>
                             <p>@{{follower.userName}}</p>
                         </div>
                     </div>

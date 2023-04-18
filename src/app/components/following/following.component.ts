@@ -24,10 +24,8 @@ export class FollowingComponent implements OnInit {
     });
     if (this.currentUserId == this.accountOwnerId)
       this.isCurrentUserIsOwner = true
-    this.userService.GetFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
-    this.followService.getByFollowerId(this.currentUserId).subscribe(res => {
-      this.currentUserfollowing = res
-    })
+    this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
+    this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
   }
   isFollow(userId: string): boolean {
     return this.currentUserfollowing.some(follow => follow.followedUserId == userId);
@@ -40,7 +38,8 @@ export class FollowingComponent implements OnInit {
       const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId);
       if (follow) {
         this.followService.delete(follow.id).subscribe(res => {
-          this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.currentUserfollowing = res })
+          this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
+          this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
         });
       }
     }
@@ -51,8 +50,8 @@ export class FollowingComponent implements OnInit {
         followedUserId: userId,
       };
       this.followService.create(newFollow).subscribe(res => {
-        this.currentUserfollowing.push(res);
-        this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.currentUserfollowing = res })
+        this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
+        this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
       });
     }
   }
