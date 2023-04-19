@@ -30,7 +30,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { MessageComponent } from './components/chat/message/message.component';
 import { MatChip } from '@angular/material/chips';
 import { UserPostListComponent } from './components/profile/user-post-list/user-post-list.component';
-import { UserLikeListComponent } from './components/profile/user-like-list/user-like-list.component';
 import { UserCommentListComponent } from './components/profile/user-comment-list/user-comment-list.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
@@ -62,7 +61,6 @@ import { NavigationService } from './services/navigation.service';
     MessageComponent,
     UserPostListComponent,
     UserCommentListComponent,
-    UserLikeListComponent,
     GroupChatMembersComponent,
     PostLikeListComponent,
     CommentLikeListComponent,

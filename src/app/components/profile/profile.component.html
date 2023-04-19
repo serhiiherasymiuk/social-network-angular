@@ -39,12 +39,10 @@
             <div class="buttons-container">
                 <div (click)="showPosts()">Posts</div>
                 <div (click)="showComments()">Comments</div>
-                <div (click)="showLikes()">Likes</div>
             </div>
             <div>
-                <app-user-post-list *ngIf="showUserPosts" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-post-list>
-                <app-user-comment-list *ngIf="showUserComments" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-comment-list>
-                <app-user-like-list *ngIf="showUserLikes" [userId]="accountOwnerId" [currentUserId]="currentUserId"></app-user-like-list>
+                <app-user-post-list *ngIf="showUserPosts" [currentUser]="currentUser"></app-user-post-list>
+                <app-user-comment-list *ngIf="showUserComments" [currentUserId]="currentUserId"></app-user-comment-list>
             </div>
         </div>
     </div>

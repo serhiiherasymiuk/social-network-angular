@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFollow } from 'src/app/interfaces/follow';
 import { IUser } from 'src/app/interfaces/user';
@@ -10,11 +10,13 @@ import { NavigationService } from 'src/app/services/navigation.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
+
 export class ProfileComponent {
   isCurrentUserIsOwner: boolean;
   currentUserId: string;
+  currentUser: IUser;
   accountOwnerId: string;
   accountOwner: IUser = {
     id: '',
@@ -34,9 +36,8 @@ export class ProfileComponent {
     groupChatMessages: [],
     notifications: []
   };
-  showUserPosts: boolean = true;
+  showUserPosts: boolean;
   showUserComments: boolean;
-  showUserLikes: boolean;
   isFollowed: boolean = false;
   followers: IFollow[] = [];
   following: IFollow[] = [];
@@ -46,8 +47,13 @@ export class ProfileComponent {
       this.userService.getByUserName(params['userName']).subscribe(res => {
         this.accountOwnerId = res.id
         this.currentUserId = this.userService.getCurrentUserId()
-        if (this.currentUserId == this.accountOwnerId)
+        this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res)
+        if (this.currentUserId == this.accountOwnerId) {
           this.isCurrentUserIsOwner = true;
+        }
+        else {
+          this.isCurrentUserIsOwner = false
+        }
         this.userService.getById(this.accountOwnerId).subscribe(res => this.accountOwner = res)
         this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { 
           this.followers = res;
@@ -56,6 +62,7 @@ export class ProfileComponent {
           }
         })
         this.followService.getByFollowerId(this.accountOwnerId).subscribe(res => this.following = res )
+        this.showPosts()
       })
     });
   }
@@ -87,16 +94,9 @@ export class ProfileComponent {
   showPosts(): void {
     this.showUserPosts = true;
     this.showUserComments = false;
-    this.showUserLikes = false;
   }
   showComments(): void {
     this.showUserPosts = false;
     this.showUserComments = true;
-    this.showUserLikes = false;
-  }
-  showLikes(): void {
-    this.showUserPosts = false;
-    this.showUserComments = false;
-    this.showUserLikes = true;
   }
 }

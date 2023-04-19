@@ -27,7 +27,7 @@
   <ul>
     <app-comment *ngFor="let comment of post?.comments" 
       [comment]="comment" 
-      [currentUserId]="currentUserId"
+      [currentUserId]="currentUser.id"
       [comments]="post.comments">
     </app-comment>
   </ul>

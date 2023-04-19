@@ -32,7 +32,7 @@ import { UserService } from 'src/app/services/user.service';
   ]
 })
 export class CommentListComponent implements OnInit {
-  currentUser: IUser = {
+  @Input() currentUser: IUser = {
     id: '',
     userName: '',
     displayUsername: '',
@@ -50,7 +50,6 @@ export class CommentListComponent implements OnInit {
     groupChatMessages: [],
     notifications: []
   };
-  @Input() currentUserId: string = "";
   @Input() post: IPost = {
     id: 0,
     content: "",
@@ -70,15 +69,15 @@ export class CommentListComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private commentService: CommentService, private userService: UserService) {}
   ngOnInit(): void {
-    this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res)
-    this.commentForm.get("userId")?.setValue(this.currentUserId);
+    this.userService.getById(this.currentUser.id).subscribe(res => this.currentUser = res)
+    this.commentForm.get("userId")?.setValue(this.currentUser.id);
     this.commentForm.get("postId")?.setValue(this.post.id);
   }
   
   commentForm = this.fb.group({
     content: [''],
     dateCreated: new Date,
-    userId: this.currentUserId,
+    userId: this.currentUser.id,
     postId: this.post.id,
     commentLikes: [],
   });

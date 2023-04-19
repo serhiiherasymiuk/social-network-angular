@@ -11,13 +11,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit{
-  @Input() currentUserId: string = ''
+  @Input() currentUser: IUser = {
+    id: '',
+    userName: '',
+    displayUsername: '',
+    email: '',
+    dateRegistrated: new Date,
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: []
+  }
   @Input() posts: IPost[] = [];
   @Input() post: IPost = {
     id: 0,
     content: '',
     dateCreated: new Date,
-    userId: this.currentUserId,
+    userId: this.currentUser.id,
     comments: [],
     postLikes: [],
   };

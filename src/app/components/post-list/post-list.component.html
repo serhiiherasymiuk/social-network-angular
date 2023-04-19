@@ -27,7 +27,7 @@
   </form>
   <app-post *ngFor="let post of posts" 
     [post]="post" 
-    [currentUserId]="currentUser.id" 
+    [currentUser]="currentUser" 
     [posts]="posts">
   </app-post>
 </div>

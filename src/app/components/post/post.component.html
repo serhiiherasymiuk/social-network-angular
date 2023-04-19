@@ -11,8 +11,8 @@
         <p class="color-gray">{{ post.dateCreated | date }}</p>
       </div>
       <div>
-        <button *ngIf="post.userId === currentUserId && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
-        <button *ngIf="post.userId === currentUserId && !isEditing" class="delete-button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
+        <button *ngIf="post.userId === currentUser.id && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
+        <button *ngIf="post.userId === currentUser.id && !isEditing" class="delete-button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
       </div>
     </div>
     <div class="post-body">
@@ -43,14 +43,14 @@
           <p>{{post.comments?.length}}</p>
       </div>
       <div (mouseenter)="isLikeHovering = true" (mouseleave)="isLikeHovering = false">
-        <app-post-like #postLikeComponent [post]="post" [currentUserId]="currentUserId"></app-post-like>
+        <app-post-like #postLikeComponent [post]="post" [currentUserId]="currentUser.id"></app-post-like>
         <p>{{post.postLikes?.length}}</p>
-        <app-post-like-list [postId]="post.id" [currentUserId]="currentUserId" *ngIf="isLikeHovering"></app-post-like-list>
+        <app-post-like-list [postId]="post.id" [currentUserId]="currentUser.id" *ngIf="isLikeHovering"></app-post-like-list>
       </div>
     </div>
     <app-comment-list #commentsComponent 
       [post]="post" 
-      [currentUserId]="currentUserId">
+      [currentUser]="currentUser">
     </app-comment-list>
   </div>
 </div>
