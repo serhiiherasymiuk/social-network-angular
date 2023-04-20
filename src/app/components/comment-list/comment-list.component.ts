@@ -67,9 +67,8 @@ export class CommentListComponent implements OnInit {
     commentLikes: [],
   };
 
-  constructor(private fb: FormBuilder, private commentService: CommentService, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private commentService: CommentService) {}
   ngOnInit(): void {
-    this.userService.getById(this.currentUser.id).subscribe(res => this.currentUser = res)
     this.commentForm.get("userId")?.setValue(this.currentUser.id);
     this.commentForm.get("postId")?.setValue(this.post.id);
   }

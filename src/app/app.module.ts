@@ -34,7 +34,6 @@ import { UserCommentListComponent } from './components/profile/user-comment-list
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
 import { CommentLikeListComponent } from './components/comment-like-list/comment-like-list.component';
-import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { BackButtonDirective } from './directives/back-button.directive';
@@ -64,7 +63,6 @@ import { NavigationService } from './services/navigation.service';
     GroupChatMembersComponent,
     PostLikeListComponent,
     CommentLikeListComponent,
-    EditProfileComponent,
     FollowingComponent,
     FollowersComponent,
     BackButtonDirective,

@@ -53,6 +53,10 @@ export class UserService {
     return this.http.get<IUser[]>(`${this.api}/getLikedUsersByCommentId/${id}`);
   }
 
+  edit(user: IUser): Observable<any> {
+    return this.http.put(this.api, user);
+  }
+
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);
   }
