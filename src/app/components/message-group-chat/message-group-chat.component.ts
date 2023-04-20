@@ -37,8 +37,7 @@ export class MessageGroupChatComponent {
     groupChats: [],
     individualChatMessages: [],
     groupChatMessages: [],
-    notifications: []
-    // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
+    notifications: [],
   };
   
   isEditing: boolean = false;

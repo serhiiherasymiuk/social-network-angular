@@ -14,8 +14,8 @@ export interface IUser{
     userName: string;
     displayUsername: string;
     email: string;
-    profilePictureUrl?: string;
-    profileBackgroundUrl?: string;
+    profilePictureUrl?: string | null;
+    profileBackgroundUrl?: string | null;
     dateRegistrated: Date;
     posts: IPost[];
     comments: IComment[];

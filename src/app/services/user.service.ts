@@ -6,11 +6,24 @@ import { IUser } from '../interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   private api: string = 'https://localhost:7085/api/Users';
 
-  constructor(private http: HttpClient) { }
+  currentUserId: string;
+
+  constructor(private http: HttpClient) {
+    this.setCurrentUserId("3209e5e1-8522-4a4c-83e1-129d63caa50c")
+   }
+
+  setCurrentUserId(userId: string) {
+    this.currentUserId = userId;
+  }
+
+  getCurrentUserId(): string {
+    return this.currentUserId;
+  }
 
   getAll(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.api);
@@ -18,6 +31,30 @@ export class UserService {
 
   getById(id: string): Observable<IUser> {
     return this.http.get<IUser>(`${this.api}/${id}`);
+  }
+
+  getByUserName(id: string): Observable<IUser> {
+    return this.http.get<IUser>(`${this.api}/getByUserName/${id}`);
+  }
+
+  getFollowersByUserId(id: string): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getFollowersByUserId/${id}`);
+  }
+
+  getFollowingByUserId(id: string): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/GetFollowingByUserId/${id}`);
+  }
+
+  getLikedUsersByPostId(id: number): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getLikedUsersByPostId/${id}`);
+  }
+
+  getLikedUsersByCommentId(id: number): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${this.api}/getLikedUsersByCommentId/${id}`);
+  }
+
+  edit(user: IUser): Observable<any> {
+    return this.http.put(this.api, user);
   }
 
   delete(id: string): Observable<any> {

@@ -3,6 +3,7 @@ import { IPost } from '../../interfaces/post';
 import { IUser } from 'src/app/interfaces/user';
 import { FormBuilder } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -18,9 +19,9 @@ export class PostListComponent implements OnInit {
     postLikes: [],
     comments: [],
   };
-  @Input() currentUserId: string = ''
+  @Input() currentUser: IUser;
   posts: IPost[] = [];
-  constructor(private fb: FormBuilder, private postService: PostService) {}
+  constructor(private fb: FormBuilder, private postService: PostService, private userService: UserService) {}
   ngOnInit(): void {
     this.postService.getAll().subscribe(res => this.posts = res);
     //this.postForm.get("userId")?.setValue(this.currentUserId);
@@ -34,7 +35,7 @@ export class PostListComponent implements OnInit {
   });
   addPost() {
     if (this.post.content.trim() !== '') {
-      this.postForm.value.userId = this.currentUserId;
+      this.postForm.value.userId = this.currentUser.id;
       this.postService.create(this.postForm.value as IPost).subscribe(res => {
         this.postService.getAll().subscribe(res => this.posts = res);
       });

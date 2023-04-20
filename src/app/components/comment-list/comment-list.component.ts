@@ -4,6 +4,8 @@ import { IPost } from '../../interfaces/post';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IComment } from '../../interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
+import { IUser } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -30,7 +32,24 @@ import { CommentService } from 'src/app/services/comment.service';
   ]
 })
 export class CommentListComponent implements OnInit {
-  @Input() currentUserId: string = "";
+  @Input() currentUser: IUser = {
+    id: '',
+    userName: '',
+    displayUsername: '',
+    email: '',
+    dateRegistrated: new Date,
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: []
+  };
   @Input() post: IPost = {
     id: 0,
     content: "",
@@ -50,14 +69,14 @@ export class CommentListComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private commentService: CommentService) {}
   ngOnInit(): void {
-    this.commentForm.get("userId")?.setValue(this.currentUserId);
+    this.commentForm.get("userId")?.setValue(this.currentUser.id);
     this.commentForm.get("postId")?.setValue(this.post.id);
   }
   
   commentForm = this.fb.group({
     content: [''],
     dateCreated: new Date,
-    userId: this.currentUserId,
+    userId: this.currentUser.id,
     postId: this.post.id,
     commentLikes: [],
   });

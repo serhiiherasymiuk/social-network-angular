@@ -3,6 +3,7 @@ import { IPost } from '../../interfaces/post';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/interfaces/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -10,13 +11,30 @@ import { IUser } from 'src/app/interfaces/user';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit{
-  @Input() currentUserId: string = ''
+  @Input() currentUser: IUser = {
+    id: '',
+    userName: '',
+    displayUsername: '',
+    email: '',
+    dateRegistrated: new Date,
+    posts: [],
+    comments: [],
+    postLikes: [],
+    commentLikes: [],
+    followers: [],
+    followedUsers: [],
+    individualChats: [],
+    groupChats: [],
+    individualChatMessages: [],
+    groupChatMessages: [],
+    notifications: []
+  }
   @Input() posts: IPost[] = [];
   @Input() post: IPost = {
     id: 0,
     content: '',
     dateCreated: new Date,
-    userId: this.currentUserId,
+    userId: this.currentUser.id,
     comments: [],
     postLikes: [],
   };
@@ -40,7 +58,8 @@ export class PostComponent implements OnInit{
     notifications: [],
     dateRegistrated: new Date(),
   };
-  constructor(private postService: PostService,private userService: UserService) {}
+  isLikeHovering: boolean = false;
+  constructor(private postService: PostService, private userService: UserService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
   }

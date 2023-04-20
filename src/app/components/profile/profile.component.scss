@@ -14,6 +14,12 @@
 .back {
     padding: 10px;
     display: flex;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    opacity: .9;
+    border-bottom: 2px solid black;
 }
 .icon {
     font-size: 30px;
@@ -25,31 +31,70 @@
     transition: all .1s linear;
 }
 .icon-container:hover {
-    background-color:darkgray;
+    background-color:#e5e5e5;
 }
 p {
     margin: 0;
 }
+.profile-background-container {
+    height: 300px;
+}
 .profile-background-container img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
 }
-.change-button {
-    margin-top: 20px;
-    width: 150px;
+.save-button {
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 5px 25px; 
+    background-color: white;    
+    transition: color .1s linear;
+    transition: background-color .1s linear;
+    cursor: pointer;
+}
+.change-button, .follow-button, .unfollow-button {
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 5px 25px; 
+    background-color: white;    
+    transition: color .1s linear;
+    transition: background-color .1s linear;
+    cursor: pointer;
+    position: relative;
+    bottom: 35px;
+}
+.change-button:hover, .save-button:hover {
+    background-color: #e5e5e5;
+}
+.bottom {
+    bottom: 15px;
+}
+.follow-button:hover {
+    border: 2px solid rgb(43, 167, 255);
+    color: rgb(43, 167, 255);
+    background-color: rgb(221, 241, 255);
+}
+.unfollow-button:hover {
+    border: 2px solid rgb(220,23,114);
+    color: rgb(220,23,114);
+    background-color: rgb(255, 240, 240);
 }
 .profile-container {
     position: relative;
-    top: -100px;
+    top: -85px;
+    margin-bottom: -85px;
 }
 .usernames {
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin-top: auto;
-    padding-top: 20px;
     padding-left: 30px;
+    padding-bottom: 10px;
 }
 .main-info {
     display: flex;
@@ -58,8 +103,20 @@ p {
     padding: 0 20px;
 }
 .other-info {
+    font-size: 16px;
     padding: 0 20px;
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    >div {
+        display: flex;
+        gap: 20px;
+        p:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
 }
 .main-info>div {
     display: flex;
@@ -75,10 +132,11 @@ p {
     border-radius: 50%;
     object-fit: cover;
     background-color: white;
+    border: 4px solid white;
 }
 .profile-picture-container img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -91,11 +149,11 @@ p {
     padding-top: 20px;
 }
 .buttons-container>div {
-    width: 34%;
+    width: 50%;
     text-align: center;
 }    
 .buttons-container>div:hover {
-    background-color: darkgray;
+    background-color: #e5e5e5;
 }
 .buttons-container div {
     cursor: pointer;
@@ -106,4 +164,63 @@ p {
 }
 .buttons-container {
     border-bottom: 2px solid black;
+}
+.edit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    >div {
+        border-radius: 15px;
+        padding: 10px;
+        background-color: white;
+        height: 160px;
+        width: 400px;
+        >div:last-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            >div {
+                width: 100%;
+                border-bottom: 2px solid black;
+                input {
+                    width: 100%;
+                    border: 0;
+                }
+                input:focus {
+                    outline: none;
+                }
+                input::placeholder {
+                    color: #434c5e;
+                }
+            }
+        }
+    }
+}
+.color-gray {
+    color: #434c5e;
+}
+.edit-header {
+    >div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

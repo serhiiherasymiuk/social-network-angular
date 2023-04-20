@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -30,11 +30,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { MessageComponent } from './components/chat/message/message.component';
 import { MatChip } from '@angular/material/chips';
 import { UserPostListComponent } from './components/profile/user-post-list/user-post-list.component';
-import { UserLikeListComponent } from './components/profile/user-like-list/user-like-list.component';
 import { UserCommentListComponent } from './components/profile/user-comment-list/user-comment-list.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
-import { FollowedComponent } from './components/followed/followed.component';
+import { PostLikeListComponent } from './components/post-like-list/post-like-list.component';
+import { CommentLikeListComponent } from './components/comment-like-list/comment-like-list.component';
+import { FollowingComponent } from './components/following/following.component';
+import { FollowersComponent } from './components/followers/followers.component';
+import { BackButtonDirective } from './directives/back-button.directive';
+import { NavigationService } from './services/navigation.service';
 import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +61,12 @@ import { GroupChatListComponent } from './components/group-chat/group-chat-list/
     MessageComponent,
     UserPostListComponent,
     UserCommentListComponent,
-    UserLikeListComponent,
     GroupChatMembersComponent,
-    FollowedComponent,
+    PostLikeListComponent,
+    CommentLikeListComponent,
+    FollowingComponent,
+    FollowersComponent,
+    BackButtonDirective,
     GroupChatListComponent,
   ],
   imports: [
@@ -67,12 +75,9 @@ import { GroupChatListComponent } from './components/group-chat/group-chat-list/
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-
     AppRoutingModule,
-
     ReactiveFormsModule,
     MatChipsModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
