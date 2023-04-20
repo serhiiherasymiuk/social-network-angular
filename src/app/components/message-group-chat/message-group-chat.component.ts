@@ -25,6 +25,7 @@ export class MessageGroupChatComponent {
     email: "",
     profilePictureUrl: "",
     profileBackgroundUrl: "",
+    dateRegistrated: new Date,
     displayUsername: "",
     posts: [],
     comments: [],
@@ -37,9 +38,7 @@ export class MessageGroupChatComponent {
     individualChatMessages: [],
     groupChatMessages: [],
     notifications: [],
-    dateRegistrated: new Date,
   };
-  // this.userService.getById(this.message.SenderId).subscribe(res=>this.sender=res);
   
   isEditing: boolean = false;
   editedContent: string = "";

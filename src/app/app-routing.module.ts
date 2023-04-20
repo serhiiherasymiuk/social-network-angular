@@ -10,6 +10,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowersComponent } from './components/followers/followers.component';
+import { FollowedComponent } from './components/followed/followed.component';
+import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +24,10 @@ const routes: Routes = [
   { path: 'members/:Members', component:  GroupChatMembersComponent},
   { path: 'profile/:userName/following', component:  FollowingComponent},
   { path: 'profile/:userName/followers', component:  FollowersComponent},
+  { path: 'members', component:  GroupChatMembersComponent},
+  { path: 'followed', component:  FollowedComponent},
+  { path: 'groups', component:  GroupChatListComponent},
+  { path: 'group/:groupChatId', component:  GroupChatComponent},
 ];
 
 @NgModule({
