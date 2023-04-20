@@ -38,7 +38,6 @@ import { FollowingComponent } from './components/following/following.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { BackButtonDirective } from './directives/back-button.directive';
 import { NavigationService } from './services/navigation.service';
-import { FollowedComponent } from './components/followed/followed.component';
 import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
 
 @NgModule({
@@ -68,7 +67,6 @@ import { GroupChatListComponent } from './components/group-chat/group-chat-list/
     FollowingComponent,
     FollowersComponent,
     BackButtonDirective,
-    FollowedComponent,
     GroupChatListComponent,
   ],
   imports: [

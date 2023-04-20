@@ -2,12 +2,10 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFollow } from 'src/app/interfaces/follow';
 import { IUser } from 'src/app/interfaces/user';
-import { FollowService } from 'src/app/services/follow.service';
 import { UserService } from 'src/app/services/user.service';
-import { Location } from '@angular/common';
-import { NavigationService } from 'src/app/services/navigation.service';
 import { FormBuilder } from '@angular/forms';
-import { concatMapTo } from 'rxjs';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { FollowService } from 'src/app/services/follow.service';
 
 @Component({
   selector: 'app-profile',
