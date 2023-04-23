@@ -1,32 +1,30 @@
 <div class="side-menu">
-    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
-        <mat-chip class="custom-chip-size" [routerLink]="['/']">
-            <i class="bi bi-house-door-fill"></i>
-            Home
-          </mat-chip>
-          <mat-chip class="custom-chip-size" [routerLink]="['/profile', currentUser.userName]">
-            <i class="bi bi-person-fill"></i>
-            Profile
-          </mat-chip>
-          <mat-chip class="custom-chip-size" [routerLink]="['/users']">
-            <i class="bi bi-chat-fill"></i>
-            Chats
-          </mat-chip>
-          <mat-chip class="custom-chip-size" [routerLink]="['/groups']">
-            <i class="bi bi-chat-fill"></i>
-            Group Chats
-          </mat-chip>
-          <mat-chip class="custom-chip-size">
-            <i class="bi bi-bell-fill"></i>
-            Notifications
-          </mat-chip>
-          <mat-chip class="custom-chip-size" [routerLink]="['/login']">
-            <i class="bi bi-bell-fill"></i>
-            Login
-          </mat-chip>
-          <mat-chip class="custom-chip-size"[routerLink]="['/register']">
-            <i class="bi bi-bell-fill"></i>
-            Sing Up
-          </mat-chip>
-    </mat-chip-listbox>
+  <div [routerLink]="['/']">
+    <i class="bi bi-house-door-fill"></i>
+    Home
+  </div>
+  <div [routerLink]="['/profile', currentUser.userName]">
+    <i class="bi bi-person-fill"></i>
+    Profile
+  </div>
+  <div [routerLink]="['/users']">
+    <i class="bi bi-chat-fill"></i>
+    Chats
+  </div>
+  <div [routerLink]="['/groups']">
+    <i class="bi bi-chat-fill"></i>
+    Group Chats
+  </div>
+  <div >
+    <i class="bi bi-bell-fill"></i>
+    Notifications
+  </div>
+  <div [routerLink]="['/login']">
+    <i class="bi bi-bell-fill"></i>
+    Login
+  </div>
+  <div [routerLink]="['/register']">
+    <i class="bi bi-bell-fill"></i>
+    Sing Up
+  </div>
 </div>
