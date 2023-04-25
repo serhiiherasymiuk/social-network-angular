@@ -2,15 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPostLike } from '../interfaces/postLike';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/api-environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostLikeService {
 
-  private api: string = 'https://localhost:7085/api/PostLikes';
+  private api: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) 
+  { 
+    this.api = environment.apiUrl + 'PostLikes';
+  }
 
   getAll(): Observable<IPostLike[]> {
     return this.http.get<IPostLike[]>(this.api);

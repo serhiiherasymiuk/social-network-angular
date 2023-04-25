@@ -2,15 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICommentLike } from '../interfaces/commentLike';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/api-environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentLikeService {
 
-  private api: string = 'https://localhost:7085/api/CommentLikes';
+  private api: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) 
+  { 
+    this.api = environment.apiUrl + 'CommentLikes';
+  }
 
   getAll(): Observable<ICommentLike[]> {
     return this.http.get<ICommentLike[]>(this.api);

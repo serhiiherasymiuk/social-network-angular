@@ -39,7 +39,7 @@ import { BackButtonDirective } from './directives/back-button.directive';
 import { NavigationService } from './services/navigation.service';
 import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtInterceptor } from './jwt.interceptor';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [

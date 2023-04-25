@@ -2,15 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPost } from '../interfaces/post';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/api-environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  private api: string = 'https://localhost:7085/api/Posts';
+  private api: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) 
+  {
+    this.api = environment.apiUrl + 'Posts';  
+  }
 
   getAll(): Observable<IPost[]> {
     return this.http.get<IPost[]>(this.api);
