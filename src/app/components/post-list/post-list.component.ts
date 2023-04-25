@@ -4,6 +4,7 @@ import { IUser } from 'src/app/interfaces/user';
 import { FormBuilder } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-post-list',
@@ -21,7 +22,7 @@ export class PostListComponent implements OnInit {
   };
   @Input() currentUser: IUser;
   posts: IPost[] = [];
-  constructor(private fb: FormBuilder, private postService: PostService, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private postService: PostService, private userService: UserService, public accountService: AccountService) {}
   ngOnInit(): void {
     this.postService.getAll().subscribe(res => this.posts = res);
     //this.postForm.get("userId")?.setValue(this.currentUserId);

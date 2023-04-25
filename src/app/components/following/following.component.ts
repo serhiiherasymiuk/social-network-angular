@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IFollow } from 'src/app/interfaces/follow';
 import { IUser } from 'src/app/interfaces/user';
+import { AccountService } from 'src/app/services/account.service';
 import { FollowService } from 'src/app/services/follow.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,7 +18,7 @@ export class FollowingComponent implements OnInit {
   isCurrentUserIsOwner: boolean = false;
   following: IUser[] = []
   currentUserfollowing: IFollow[] = []
-  constructor(private route: ActivatedRoute, private userService: UserService, private followService: FollowService) {}
+  constructor(private route: ActivatedRoute, private userService: UserService, private followService: FollowService, private accountService: AccountService) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.accountOwnerUserName = params['userName']
@@ -38,25 +39,27 @@ export class FollowingComponent implements OnInit {
     return userId == this.currentUserId;
   }
   toggleFollow(userId: string): void {
-    if (this.isFollow(userId)) {
-      const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId && follow.followedUserId == userId);
-      if (follow) {
-        this.followService.delete(follow.id).subscribe(res => {
+    if (this.accountService.isAuthorized()) {
+      if (this.isFollow(userId)) {
+        const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId && follow.followedUserId == userId);
+        if (follow) {
+          this.followService.delete(follow.id).subscribe(res => {
+            this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
+            this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
+          });
+        }
+      }
+      else {
+        const newFollow: IFollow = {
+          id: 0,
+          followerId: this.currentUserId,
+          followedUserId: userId,
+        };
+        this.followService.create(newFollow).subscribe(res => {
           this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
           this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
         });
       }
-    }
-    else {
-      const newFollow: IFollow = {
-        id: 0,
-        followerId: this.currentUserId,
-        followedUserId: userId,
-      };
-      this.followService.create(newFollow).subscribe(res => {
-        this.followService.getByFollowerId(this.currentUserId).subscribe(res => this.currentUserfollowing = res)
-        this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)
-      });
     }
   }
 }

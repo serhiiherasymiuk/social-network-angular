@@ -29,7 +29,9 @@ export class AccountService {
   logout(): Observable<any> {
     return this.http.post(`${this.url}/logout`, null);
   }
-
+  isAuthorized(): boolean {
+    return this.getToken() != null;
+  }
   clearToken(): void {
     localStorage.removeItem(this.tokenKey);
   }

@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPost } from 'src/app/interfaces/post';
 import { IPostLike } from 'src/app/interfaces/postLike';
+import { AccountService } from 'src/app/services/account.service';
 import { PostLikeService } from 'src/app/services/post-like.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post-like',
@@ -10,12 +12,13 @@ import { PostLikeService } from 'src/app/services/post-like.service';
 })
 export class PostLikeComponent implements OnInit {
   @Input() post!: IPost;
-  @Input() currentUserId: string = ''
+  currentUserId: string;
   liked = false;
 
 
-  constructor(private postLikeService: PostLikeService) {}
+  constructor(private postLikeService: PostLikeService,private userService: UserService, private accountService: AccountService) {}
   ngOnInit(): void {
+    this.currentUserId = this.userService.getCurrentUserId()
     this.postLikeService.getByPostId(this.post.id).subscribe(res => {
       const existingLikeIndex = res.findIndex(like => like.userId == this.currentUserId);
       if(existingLikeIndex != undefined && existingLikeIndex >= 0)
@@ -24,22 +27,24 @@ export class PostLikeComponent implements OnInit {
   }
 
   toggleLike() {
-    this.liked = !this.liked;
-    const existingLikeIndex = this.post?.postLikes?.findIndex(like => like.userId == this.currentUserId);
-    if (existingLikeIndex != undefined && existingLikeIndex >= 0) {
-      const existingLikeId = this.post?.postLikes?.[existingLikeIndex]?.id ?? 0;
-      this.postLikeService.delete(existingLikeId).subscribe();
-      this.post?.postLikes?.splice(existingLikeIndex, 1);
-    }
-    else {
-      const newLike: IPostLike = {
-        id: 0,
-        userId: this.currentUserId,
-        postId: this.post?.id || 0
-      };
-      this.postLikeService.create(newLike).subscribe(res => {
-        this.postLikeService.getByPostId(this.post.id).subscribe(res => this.post.postLikes = res)
-      })
+    if (this.accountService.isAuthorized()) {
+      this.liked = !this.liked;
+      const existingLikeIndex = this.post?.postLikes?.findIndex(like => like.userId == this.currentUserId);
+      if (existingLikeIndex != undefined && existingLikeIndex >= 0) {
+        const existingLikeId = this.post?.postLikes?.[existingLikeIndex]?.id ?? 0;
+        this.postLikeService.delete(existingLikeId).subscribe();
+        this.post?.postLikes?.splice(existingLikeIndex, 1);
+      }
+      else {
+        const newLike: IPostLike = {
+          id: 0,
+          userId: this.currentUserId,
+          postId: this.post?.id || 0
+        };
+        this.postLikeService.create(newLike).subscribe(res => {
+          this.postLikeService.getByPostId(this.post.id).subscribe(res => this.post.postLikes = res)
+        })
+      }
     }
   }
 }

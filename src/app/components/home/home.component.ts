@@ -9,11 +9,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
   // get from login or registartion
-  currentUserId : string;
+
   constructor(private userService: UserService) {}
   ngOnInit(): void {
-    this.currentUserId = this.userService.getCurrentUserId()
-    this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res);
+    //this.userService.setCurrentUserId("3209e5e1-8522-4a4c-83e1-129d63caa50c")
+    if (this.userService.getCurrentUserId() != undefined)
+      this.userService.getById(this.userService.getCurrentUserId()).subscribe(res => this.currentUser = res);
   }
   currentUser: IUser = {
     id: '',

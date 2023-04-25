@@ -59,7 +59,7 @@ export class PostComponent implements OnInit{
     dateRegistrated: new Date(),
   };
   isLikeHovering: boolean = false;
-  constructor(private postService: PostService, private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private postService: PostService, public userService: UserService) {}
   ngOnInit(): void {
     this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
   }
@@ -72,7 +72,7 @@ export class PostComponent implements OnInit{
   savePost() {
     if (this.editedContent.trim() !== '') {
       this.post.content = this.editedContent;
-      this.postService.edit(this.post).subscribe();;
+      this.postService.edit(this.post).subscribe();
     }
     this.isEditing = false;
   }

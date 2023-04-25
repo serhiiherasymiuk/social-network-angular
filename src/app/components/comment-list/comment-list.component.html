@@ -1,6 +1,6 @@
 <div [@showHideComments]="showComments ? 'show' : 'hide'" class="comment-list">
   <div>
-    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+    <form *ngIf="accountService.isAuthorized()" [formGroup]="commentForm" (ngSubmit)="addComment()">
       <div>
         <div class="profile-picture-container" [routerLink]="['/profile', currentUser.userName]">
           <img *ngIf="currentUser.profilePictureUrl != null" src="{{currentUser.profilePictureUrl}}" alt="">
@@ -26,8 +26,7 @@
   </div>
   <ul>
     <app-comment *ngFor="let comment of post?.comments" 
-      [comment]="comment" 
-      [currentUserId]="currentUser.id"
+      [comment]="comment"
       [comments]="post.comments">
     </app-comment>
   </ul>

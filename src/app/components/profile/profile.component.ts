@@ -48,12 +48,14 @@ export class ProfileComponent {
       this.userService.getByUserName(params['userName']).subscribe(res => {
         this.accountOwnerId = res.id
         this.currentUserId = this.userService.getCurrentUserId()
-        this.userService.getById(this.currentUserId).subscribe(res => {
-          this.currentUser = res
-          this.userChangesForm.get("displayUsername")?.setValue(this.currentUser.displayUsername);
-          this.userChangesForm.get("profilePictureUrl")?.setValue(this.currentUser.profilePictureUrl || '');
-          this.userChangesForm.get("profileBackgroundUrl")?.setValue(this.currentUser.profileBackgroundUrl || '');
-        })
+        if (this.userService.getCurrentUserId() != undefined) [
+          this.userService.getById(this.currentUserId).subscribe(res => {
+            this.currentUser = res
+            this.userChangesForm.get("displayUsername")?.setValue(this.currentUser.displayUsername);
+            this.userChangesForm.get("profilePictureUrl")?.setValue(this.currentUser.profilePictureUrl || '');
+            this.userChangesForm.get("profileBackgroundUrl")?.setValue(this.currentUser.profileBackgroundUrl || '');
+          })
+        ]
         if (this.currentUserId == this.accountOwnerId) {
           this.isCurrentUserIsOwner = true;
         }

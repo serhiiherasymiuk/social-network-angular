@@ -20,6 +20,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PostLikeListComponent implements OnInit {
   constructor(private userService: UserService) {}
   ngOnInit(): void {
+    this.currentUserId = this.userService.getCurrentUserId()
     this.userService.getLikedUsersByPostId(this.postId).subscribe(res => {
       this.likedUsers = res
       this.likedUsers = this.likedUsers.splice(0, 3)
@@ -27,5 +28,5 @@ export class PostLikeListComponent implements OnInit {
   }
   likedUsers: IUser[]
   @Input() postId: number;
-  @Input() currentUserId: string;
+  currentUserId: string;
 }

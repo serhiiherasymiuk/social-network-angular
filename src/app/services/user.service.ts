@@ -16,7 +16,6 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.api = environment.apiUrl + 'Users';  
-    this.setCurrentUserId("3209e5e1-8522-4a4c-83e1-129d63caa50c")
    }
 
   setCurrentUserId(userId: string) {
