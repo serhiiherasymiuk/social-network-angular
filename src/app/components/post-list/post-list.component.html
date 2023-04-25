@@ -2,7 +2,7 @@
   <div class="page-name">
     <h1>Home</h1>
   </div>
-  <form [formGroup]="postForm" (ngSubmit)="addPost()">
+  <form *ngIf="accountService.isAuthorized()" [formGroup]="postForm" (ngSubmit)="addPost()">
     <div>
       <div class="profile-picture-container" [routerLink]="['/profile', currentUser.userName]">
         <img *ngIf="currentUser.profilePictureUrl != null" src="{{currentUser.profilePictureUrl}}" alt="">

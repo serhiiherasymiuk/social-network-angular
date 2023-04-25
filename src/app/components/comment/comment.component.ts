@@ -34,10 +34,11 @@ export class CommentComponent implements OnInit{
   isLikeHovering: boolean = false;
   constructor(private commentService: CommentService, private commentLikeService: CommentLikeService, private userService: UserService) {}
   ngOnInit(): void {
+    this.currentUserId = this.userService.getCurrentUserId()
     this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);
     this.userService.getById(this.comment.userId).subscribe(res => this.commentOwner = res)
   }
-  @Input() currentUserId: string = "";
+  currentUserId: string;
   @Input() comments: IComment[] | undefined = [] ;
   @Input() comment: IComment = {
     id: 0,

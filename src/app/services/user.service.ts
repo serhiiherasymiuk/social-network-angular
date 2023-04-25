@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/user';
+import { environment } from 'src/environments/api-environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ import { IUser } from '../interfaces/user';
 
 export class UserService {
 
-  private api: string = 'https://localhost:7085/api/Users';
+  private api: string;
 
   currentUserId: string;
 
   constructor(private http: HttpClient) {
-    this.setCurrentUserId("3209e5e1-8522-4a4c-83e1-129d63caa50c")
+    this.api = environment.apiUrl + 'Users';  
    }
 
   setCurrentUserId(userId: string) {

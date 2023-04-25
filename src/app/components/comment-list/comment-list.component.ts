@@ -6,6 +6,7 @@ import { IComment } from '../../interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { IUser } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -67,9 +68,9 @@ export class CommentListComponent implements OnInit {
     commentLikes: [],
   };
 
-  constructor(private fb: FormBuilder, private commentService: CommentService) {}
+  constructor(private fb: FormBuilder, private commentService: CommentService, private userService: UserService, public accountService: AccountService) {}
   ngOnInit(): void {
-    this.commentForm.get("userId")?.setValue(this.currentUser.id);
+    this.commentForm.get("userId")?.setValue(this.userService.getCurrentUserId());
     this.commentForm.get("postId")?.setValue(this.post.id);
   }
   

@@ -2,14 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IFollow } from '../interfaces/follow';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/api-environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FollowService {
-  private api: string = 'https://localhost:7085/api/Follows';
+  private api: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) 
+  { 
+    this.api = environment.apiUrl + 'Follows';
+  }
 
   getAll(): Observable<IFollow[]> {
     return this.http.get<IFollow[]>(this.api);
