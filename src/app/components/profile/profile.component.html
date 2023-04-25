@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="profile-background-container">
-            <img src="{{accountOwner.profileBackgroundUrl}}" alt="">
+            <img *ngIf="accountOwner.profileBackgroundUrl != null" src="{{accountOwner.profileBackgroundUrl}}" alt="">
         </div>
         <div class="profile-container">
             <div class="main-info">
