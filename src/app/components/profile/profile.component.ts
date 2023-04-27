@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { FormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { FollowService } from 'src/app/services/follow.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-profile',
@@ -42,7 +43,7 @@ export class ProfileComponent {
   isFollowed: boolean = false;
   followers: IFollow[] = [];
   following: IFollow[] = [];
-  constructor(private fb: FormBuilder, private navigation: NavigationService, private route: ActivatedRoute, private userService: UserService, private followService: FollowService) { }
+  constructor(private accountService: AccountService, private fb: FormBuilder, private navigation: NavigationService, private route: ActivatedRoute, private userService: UserService, private followService: FollowService) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userService.getByUserName(params['userName']).subscribe(res => {
@@ -111,26 +112,28 @@ export class ProfileComponent {
     }
   }
   toggleFollow(): void {
-    if (this.isFollowed) {
-      const follow = this.followers.find(follow => follow.followerId == this.currentUserId);
-      if (follow) {
-        this.followService.delete(follow.id).subscribe(res => {
+    if (this.accountService.isAuthorized()) {
+      if (this.isFollowed) {
+        const follow = this.followers.find(follow => follow.followerId == this.currentUserId);
+        if (follow) {
+          this.followService.delete(follow.id).subscribe(res => {
+            this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.followers = res })
+          });
+        }
+      }
+      else {
+        const newFollow: IFollow = {
+          id: 0,
+          followerId: this.currentUserId,
+          followedUserId: this.accountOwnerId,
+        };
+        this.followService.create(newFollow).subscribe(res => {
+          this.followers.push(res);
           this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.followers = res })
         });
       }
+      this.isFollowed = !this.isFollowed;
     }
-    else {
-      const newFollow: IFollow = {
-        id: 0,
-        followerId: this.currentUserId,
-        followedUserId: this.accountOwnerId,
-      };
-      this.followService.create(newFollow).subscribe(res => {
-        this.followers.push(res);
-        this.followService.getByFollowedUserId(this.accountOwnerId).subscribe(res => { this.followers = res })
-      });
-    }
-    this.isFollowed = !this.isFollowed;
   }
   showPosts(): void {
     this.showUserPosts = true;

@@ -40,6 +40,7 @@ import { NavigationService } from './services/navigation.service';
 import { GroupChatListComponent } from './components/group-chat/group-chat-list/group-chat-list.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { UnathorizedMenuComponent } from './components/unathorized-menu/unathorized-menu.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     FollowersComponent,
     BackButtonDirective,
     GroupChatListComponent,
+    UnathorizedMenuComponent,
   ],
   imports: [
     HttpClientModule,
