@@ -62,7 +62,6 @@ export class PostComponent implements OnInit{
   isLikeHovering: boolean = false;
   constructor(private postService: PostService, private userService: UserService, public accountService: AccountService) {}
   ngOnInit(): void {
-    console.log(this.currentUser)
     this.userService.getById(this.post.userId).subscribe(res => this.postOwner = res)
   }
   isEditing: boolean = false;

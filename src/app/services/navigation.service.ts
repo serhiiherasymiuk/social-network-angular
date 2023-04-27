@@ -9,7 +9,6 @@ export class NavigationService {
   constructor(private router: Router, private location: Location) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log(this.history)
         this.history.push(event.urlAfterRedirects);
       }
     });
