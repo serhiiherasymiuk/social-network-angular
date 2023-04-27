@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ILoginRequest } from 'src/app/interfaces/account';
 import { AccountService } from 'src/app/services/account.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,22 +16,20 @@ export class LoginComponent {
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) { }
 
   login(): void {
+    console.log(this.loginForm.value)
     if (!this.loginForm.valid) {
-      alert("Invalid value, please enter again!");
       return;
     }
 
     let request = this.loginForm.value as ILoginRequest;
 
-    // send POST request
     this.accountService.login(request).subscribe(res => {
-
       this.accountService.saveToken(res.token);
-      this.userService.setCurrentUserId(res.userId)
-      console.log("Logged In! Token: " + res.token);
+      this.accountService.setCurrentUserId(res.userId);
+      this.router.navigate(['']);
     });
   }
 }

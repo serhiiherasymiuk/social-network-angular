@@ -1,3 +1,4 @@
+<app-unathorized-menu (closeMenu)="toggleUnathorizedFollowClick()" *ngIf="isUnathorizedFollowClicked" [unathorizedText]="unathorizedMessage"></app-unathorized-menu>
 <form [formGroup]="userChangesForm" (ngSubmit)="saveChanges()"> 
     <div class="edit" *ngIf="isEditing" (mousedown)="toggleEditing()">
         <div (mousedown)="stopPropagation($event)">

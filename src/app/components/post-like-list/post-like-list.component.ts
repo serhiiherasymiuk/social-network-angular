@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/user';
+import { AccountService } from 'src/app/services/account.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,9 +19,9 @@ import { UserService } from 'src/app/services/user.service';
   ],
 })
 export class PostLikeListComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private accountService: AccountService) {}
   ngOnInit(): void {
-    this.currentUserId = this.userService.getCurrentUserId()
+    this.currentUserId = this.accountService.getCurrentUserId()
     this.userService.getLikedUsersByPostId(this.postId).subscribe(res => {
       this.likedUsers = res
       this.likedUsers = this.likedUsers.splice(0, 3)

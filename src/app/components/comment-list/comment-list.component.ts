@@ -70,7 +70,7 @@ export class CommentListComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private commentService: CommentService, private userService: UserService, public accountService: AccountService) {}
   ngOnInit(): void {
-    this.commentForm.get("userId")?.setValue(this.userService.getCurrentUserId());
+    this.commentForm.get("userId")?.setValue(this.accountService.getCurrentUserId());
     this.commentForm.get("postId")?.setValue(this.post.id);
   }
   

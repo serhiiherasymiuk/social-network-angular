@@ -10,6 +10,22 @@ import { CommentLikeService } from 'src/app/services/comment-like.service';
   styleUrls: ['./comment-like.component.scss']
 })
 export class CommentLikeComponent implements OnInit {
+  unathorizedtext: string = "Like the comment to make the author happy."
+  isUnathorizedLikeClicked: boolean = false;
+  toggleUnathorizedLikeClick() {
+    if (!this.accountService.isAuthorized()) {
+      if (this.isUnathorizedLikeClicked) {
+        document.body.style.overflow = 'auto';
+        document.body.style.marginRight = '0'
+        this.isUnathorizedLikeClicked = false;
+      }
+      else {
+        document.body.style.marginRight = '15px'
+        document.body.style.overflow = 'hidden';
+        this.isUnathorizedLikeClicked = true
+      }
+    }
+  }
   constructor(private commentLikeService: CommentLikeService, private accountService: AccountService) {}
   ngOnInit(): void {
     this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => {
@@ -23,6 +39,7 @@ export class CommentLikeComponent implements OnInit {
   liked: boolean = false;
 
   toggleLike() {
+    this.toggleUnathorizedLikeClick();
     if (this.accountService.isAuthorized()) {
       this.liked = !this.liked;
       const existingLikeIndex = this.comment?.commentLikes?.findIndex(like => like.userId == this.currentUserId);

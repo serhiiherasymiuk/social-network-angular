@@ -1,3 +1,4 @@
+<app-unathorized-menu (closeMenu)="toggleUnathorizedLikeClick()" *ngIf="isUnathorizedLikeClicked" [unathorizedText]="unathorizedMessage"></app-unathorized-menu>
 <div (click)="toggleLike()">
     <input type="checkbox" class="checkbox" [checked]="liked" />
     <label for="checkbox">

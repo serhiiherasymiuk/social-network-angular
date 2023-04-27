@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/comment';
 import { IUser } from 'src/app/interfaces/user';
+import { AccountService } from 'src/app/services/account.service';
 import { CommentLikeService } from 'src/app/services/comment-like.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { UserService } from 'src/app/services/user.service';
@@ -32,9 +33,9 @@ export class CommentComponent implements OnInit{
     dateRegistrated: new Date(),
   };
   isLikeHovering: boolean = false;
-  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService, private userService: UserService) {}
+  constructor(private commentService: CommentService, private commentLikeService: CommentLikeService, private userService: UserService, private accountService: AccountService) {}
   ngOnInit(): void {
-    this.currentUserId = this.userService.getCurrentUserId()
+    this.currentUserId = this.accountService.getCurrentUserId()
     this.commentLikeService.getByCommentId(this.comment.id).subscribe(res => this.comment.commentLikes = res);
     this.userService.getById(this.comment.userId).subscribe(res => this.commentOwner = res)
   }
