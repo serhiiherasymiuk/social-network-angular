@@ -12,6 +12,22 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./following.component.scss']
 })
 export class FollowingComponent implements OnInit {
+  unathorizedMessage: string;
+  isUnathorizedFollowClicked: boolean = false;
+  toggleUnathorizedFollowClick() {
+    if (!this.accountService.isAuthorized()) {
+      if (this.isUnathorizedFollowClicked) {
+        document.body.style.overflow = 'auto';
+        document.body.style.marginRight = '0'
+        this.isUnathorizedFollowClicked = false;
+      }
+      else {
+        document.body.style.marginRight = '15px'
+        document.body.style.overflow = 'hidden';
+        this.isUnathorizedFollowClicked = true
+      }
+    }
+  }
   currentUserId: string;
   accountOwnerId: string;
   accountOwnerUserName: string;
@@ -39,6 +55,10 @@ export class FollowingComponent implements OnInit {
     return userId == this.currentUserId;
   }
   toggleFollow(userId: string): void {
+    this.userService.getById(userId).subscribe(res => {
+      this.unathorizedMessage = `Start reading ${res.displayUsername} to see what he or she shares.`
+    })
+    this.toggleUnathorizedFollowClick()
     if (this.accountService.isAuthorized()) {
       if (this.isFollow(userId)) {
         const follow = this.currentUserfollowing.find(follow => follow.followerId == this.currentUserId && follow.followedUserId == userId);

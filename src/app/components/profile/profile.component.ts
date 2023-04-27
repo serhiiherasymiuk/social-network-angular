@@ -37,6 +37,22 @@ export class ProfileComponent {
     groupChatMessages: [],
     notifications: []
   };
+  unathorizedMessage: string;
+  isUnathorizedFollowClicked: boolean = false;
+  toggleUnathorizedFollowClick() {
+    if (!this.accountService.isAuthorized()) {
+      if (this.isUnathorizedFollowClicked) {
+        document.body.style.overflow = 'auto';
+        document.body.style.marginRight = '0'
+        this.isUnathorizedFollowClicked = false;
+      }
+      else {
+        document.body.style.marginRight = '15px'
+        document.body.style.overflow = 'hidden';
+        this.isUnathorizedFollowClicked = true
+      }
+    }
+  }
   showUserPosts: boolean;
   showUserComments: boolean;
   isEditing: boolean = false;
@@ -48,6 +64,7 @@ export class ProfileComponent {
     this.route.params.subscribe(params => {
       this.userService.getByUserName(params['userName']).subscribe(res => {
         this.accountOwnerId = res.id
+        this.unathorizedMessage = `Start reading ${res.displayUsername} to see what he or she shares.`
         this.currentUserId = this.userService.getCurrentUserId()
         if (this.userService.getCurrentUserId() != undefined) [
           this.userService.getById(this.currentUserId).subscribe(res => {
@@ -112,6 +129,7 @@ export class ProfileComponent {
     }
   }
   toggleFollow(): void {
+    this.toggleUnathorizedFollowClick();
     if (this.accountService.isAuthorized()) {
       if (this.isFollowed) {
         const follow = this.followers.find(follow => follow.followerId == this.currentUserId);

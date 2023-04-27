@@ -4,7 +4,6 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
   selector: 'app-unathorized-menu',
   templateUrl: './unathorized-menu.component.html',
   styleUrls: ['./unathorized-menu.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class UnathorizedMenuComponent {
   @Input() unathorizedText: string;

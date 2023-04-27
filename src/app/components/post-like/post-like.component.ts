@@ -14,7 +14,7 @@ export class PostLikeComponent implements OnInit {
   @Input() post!: IPost;
   currentUserId: string;
   liked = false;
-  unathorizedtext: string = "Like the post to make the author happy."
+  unathorizedMessage: string = "Like the post to make the author happy."
   isUnathorizedLikeClicked: boolean = false;
   toggleUnathorizedLikeClick() {
     if (!this.accountService.isAuthorized()) {
