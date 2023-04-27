@@ -35,7 +35,7 @@ export class PostLikeComponent implements OnInit {
   ngOnInit(): void {
     document.body.style.overflow = 'auto';
     document.body.style.marginRight = '0'
-    this.currentUserId = this.userService.getCurrentUserId()
+    this.currentUserId = this.accountService.getCurrentUserId()
     this.postLikeService.getByPostId(this.post.id).subscribe(res => {
       const existingLikeIndex = res.findIndex(like => like.userId == this.currentUserId);
       if(existingLikeIndex != undefined && existingLikeIndex >= 0)

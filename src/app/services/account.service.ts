@@ -10,10 +10,11 @@ import { ILoginRequest, ILoginResponse } from '../interfaces/account';
 export class AccountService {
 
   private tokenKey: string = 'access_token';
+  private currentUserId: string;
   private url: string;
 
   constructor(private http: HttpClient) {
-    this.url = environment.apiUrl + 'accounts';
+    this.url = environment.apiUrl + 'Users';
   }
 
   login(data: ILoginRequest): Observable<ILoginResponse> {
@@ -35,10 +36,19 @@ export class AccountService {
   clearToken(): void {
     localStorage.removeItem(this.tokenKey);
   }
+  clearCurrentUserId(): void {
+    localStorage.removeItem(this.currentUserId);
+  }
   saveToken(token: string): void{
     localStorage[this.tokenKey] = token;
   }
   getToken(): string {
     return localStorage[this.tokenKey];
+  }
+  setCurrentUserId(userId: string) {
+    localStorage[this.currentUserId] = userId;
+  }
+  getCurrentUserId(): string {
+    return localStorage[this.currentUserId];
   }
 }

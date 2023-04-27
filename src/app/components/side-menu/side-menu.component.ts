@@ -11,9 +11,15 @@ import { UserService } from 'src/app/services/user.service';
 export class SideMenuComponent implements OnInit {
   constructor(private userService: UserService, public accountService: AccountService) {}
   ngOnInit(): void {
-    this.currentUserId = this.userService.getCurrentUserId()
+    this.currentUserId = this.accountService.getCurrentUserId()
     if (this.currentUserId != undefined)
       this.userService.getById(this.currentUserId).subscribe(res => this.currentUser = res)
+  }
+  logout(): void {
+    this.accountService.logout().subscribe(res => {
+      this.accountService.clearToken();
+      this.accountService.clearCurrentUserId();
+    })
   }
   currentUserId: string = ''
   currentUser: IUser = {

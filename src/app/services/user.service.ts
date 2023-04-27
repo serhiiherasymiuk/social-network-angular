@@ -12,19 +12,9 @@ export class UserService {
 
   private api: string;
 
-  currentUserId: string;
-
   constructor(private http: HttpClient) {
     this.api = environment.apiUrl + 'Users';  
    }
-
-  setCurrentUserId(userId: string) {
-    this.currentUserId = userId;
-  }
-
-  getCurrentUserId(): string {
-    return this.currentUserId;
-  }
 
   getAll(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.api);

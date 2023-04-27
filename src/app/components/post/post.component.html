@@ -11,7 +11,7 @@
         <p class="color-gray">{{ post.dateCreated | date }}</p>
       </div>
       <div>
-        <div *ngIf="userService.getCurrentUserId() != undefined">
+        <div *ngIf="accountService.getCurrentUserId() != undefined">
           <button *ngIf="post.userId === currentUser.id && !isEditing" class="edit-button" (click)="toggleEditing()"><i class="bi bi-pen"></i></button>
           <button *ngIf="post.userId === currentUser.id && !isEditing" class="delete-button" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
         </div>

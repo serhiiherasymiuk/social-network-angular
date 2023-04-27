@@ -65,8 +65,8 @@ export class ProfileComponent {
       this.userService.getByUserName(params['userName']).subscribe(res => {
         this.accountOwnerId = res.id
         this.unathorizedMessage = `Start reading ${res.displayUsername} to see what he or she shares.`
-        this.currentUserId = this.userService.getCurrentUserId()
-        if (this.userService.getCurrentUserId() != undefined) [
+        this.currentUserId = this.accountService.getCurrentUserId()
+        if (this.accountService.getCurrentUserId() != undefined) [
           this.userService.getById(this.currentUserId).subscribe(res => {
             this.currentUser = res
             this.userChangesForm.get("displayUsername")?.setValue(this.currentUser.displayUsername);

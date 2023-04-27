@@ -40,7 +40,7 @@ export class FollowingComponent implements OnInit {
       this.accountOwnerUserName = params['userName']
       this.userService.getByUserName(params['userName']).subscribe(res => {
         this.accountOwnerId = res.id
-        this.currentUserId = this.userService.getCurrentUserId()
+        this.currentUserId = this.accountService.getCurrentUserId()
         if (this.currentUserId == this.accountOwnerId)
           this.isCurrentUserIsOwner = true
         this.userService.getFollowingByUserId(this.accountOwnerId).subscribe(res => this.following = res)

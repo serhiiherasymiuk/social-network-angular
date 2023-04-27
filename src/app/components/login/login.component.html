@@ -1,31 +1,18 @@
 <div class="container">
-  <input type="checkbox" id="check">
-  <div class="login form">
-    <header>Login</header>
-    <form action="#">
-      <input type="text" placeholder="Enter your email">
-      <input type="password" placeholder="Enter your password">
-      <a href="#">Forgot password?</a>
-      <input type="button" class="button" value="Login">
-    </form>
-    <div class="signup">
-      <span class="signup">Don't have an account?
-       <label for="check" [routerLink]="['/register']">Signup</label>
-      </span>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <div action="#">
+        <input formControlName="username" type="text" required placeholder="Enter username">
+        <input formControlName="password" type="password" required placeholder="Enter your password">
+        <button mat-flat-button type="submit" color="accent">Login</button>
+      </div>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+        <label for="check" [routerLink]="['/register']">Signup</label>
+        </span>
+      </div>
     </div>
-  </div>
-  <!-- <div class="registration form">
-    <header>Signup</header>
-    <form action="#">
-      <input type="text" placeholder="Enter your email">
-      <input type="password" placeholder="Create a password">
-      <input type="password" placeholder="Confirm your password">
-      <input type="button" class="button" value="Signup">
-    </form>
-    <div class="signup">
-      <span class="signup">Already have an account?
-       <label for="check">Login</label>
-      </span>
-    </div>
-  </div> -->
+  </form>
 </div>
